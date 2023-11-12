@@ -12,7 +12,7 @@ const SectionTwo = () => {
       <Catlog/>
 
       <Instagram />
-      <Footer/>
+      
     </div>
   )
 }

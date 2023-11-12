@@ -67,7 +67,7 @@ const Catlog = () => {
 
 
   return (
-    <div className='flex gap-10 flex-col mt-10'>
+    <div className='flex gap-10 flex-col mt-10' id="catalog">
     <h1 className="text-myblack font-bold text-xl">
     
     Catalog

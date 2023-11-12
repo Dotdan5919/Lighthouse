@@ -21,9 +21,14 @@ const Instagram = () => {
     }
 
   return (
-    <div className=' gap-10 flex flex-col py-8'>
+    <div className=' gap-10 flex flex-col py-8' id="instagram">
       <h1 className='text-myblack font-bold text-xl' >Instagram</h1>
-      <p className='leading-relaxed'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi impedit sit consectetur reprehenderit aspernatur voluptatem quidem minima deleniti modi nesciunt autem itaque, vitae asperiores non doloribus. Unde laboriosam quos aperiam perferendis modi dignissimos asperiores magni tenetur hic quae minus eos praesentium veniam itaque quod nemo magnam eligendi ipsa voluptatem eius, maxime voluptates? Alias autem sequi unde necessitatibus, eaque quae sunt repellendus ducimus quam perspiciatis dolores architecto. Unde fugit a commodi quibusdam, numquam totam aut earum corporis quisquam accusamus? Quam placeat sequi necessitatibus.</p>
+      <p className='leading-relaxed text-left w-[70%] text-[13px]'>Please check out instagram.
+      We post reviews of our 
+      favorite customers who have 
+      already  purchased and built into 
+      their interior our designer lamps, perhaps this will help you choose your
+      own</p>
     
     <div className='flex justify-center items-center gap-5 ' >
     <SliderBtn name="left" _class=""   click={handleClickLeft} />
@@ -53,7 +58,7 @@ const Instagram = () => {
     </div>
 
 
-    <p className="underline">go to profile <FontAwesomeIcon icon={faArrowRight}/></p>
+    <p className="underline cursor-pointer">go to profile <FontAwesomeIcon icon={faArrowRight}/></p>
 
     </div>
   )

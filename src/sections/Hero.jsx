@@ -5,10 +5,11 @@ import SideMiniNav from '../components/SideMiniNav'
 import light_1  from '../Assets/images/light_1.png'
 import Herofooter from '../components/Herofooter'
 import RegularBtn from '../components/RegularBtn'
+import { Link } from 'react-scroll'
 
 const Hero = () => {
   return (
-    <div className='bg-myblack w-[100vw] lg:h-[100vh] sm:h-[130vh] lg:block flex flex-col items-center justify-center '>
+    <div className='bg-myblack w-[100vw] lg:h-[100vh] sm:h-[130vh] lg:block flex flex-col items-center justify-center ' id="hero">
       
 
 <div className="lg:grid lg:grid-cols-12 flex flex-col gap-5   lg:grid-flow-col justify-center w-[85%]   lg:h-[80vh]  pb-2 items-center"> 
@@ -25,7 +26,9 @@ project, with a 20% discount
 right now.
 Get an additional coupon for
 ordering online and for pickup</p>
+<Link to="catalog" duration={400} offset={-200} smooth="true" >
 <RegularBtn name="Order Now"  type="white" />
+</Link>
     
 </div>
 

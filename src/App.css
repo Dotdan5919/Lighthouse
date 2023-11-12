@@ -92,3 +92,19 @@ font-size: 10px;
 .overflow-scroll::-webkit-scrollbar { 
   display: none; 
 }
+.all{
+
+overflow: hidden;
+  scroll-behavior:smooth;
+}
+
+.activenav::after{
+
+  content: ' ';
+  border-width: 1px;
+  border-radius: .5rem;
+  display: flex;
+
+
+}
+
