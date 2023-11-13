@@ -21,7 +21,11 @@ const router= createBrowserRouter(
     <Route path='/' element={<RootLayouts/>}>
     
 
-<Route path='/' index element={<Homepage/>}/>
+<Route path='/' index  element={<Homepage/>}/>
+
+<Route path=':id'  element={<Homepage/>}/>
+
+
 <Route path='shoppingCart'  element={<ShoppingCart/>}/>
 
 

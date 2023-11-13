@@ -3,26 +3,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import RegularBtn from '../components/RegularBtn'
 import Cart from '../components/Cart'
+import { NavLink } from 'react-router-dom'
 
 
 const ShoppingCart = () => {
   return (
    
-    <div className='shadow-lg w-[100%] h-[100vh]  flex'>
+    <div className='shadow-lg w-[100%] lg:h-[100vh] h-[100%] flex '>
    
       
-    <div className="left px-20 py-10 flex flex-col ">
-    <div className="flex justify-between p-7">
+    <div className="left px-20 py-20 flex flex-col  ">
+    <div className="flex lg:flex-row flex-col justify-between p-7">
         <h1 className='font-bold text-[25px]'>Shopping Cart</h1>
         <p>in your bag 4 items</p>
     </div>
-    <div className="flex flex-col h-[90%] overflow-scroll">
+    <div className="flex flex-col h-[90%] w-[100%]  overflow-scroll">
         <hr />
         
 <Cart/>
 <hr />
 <Cart/>
 <Cart/>
+<Cart/>
+
 
 
 <hr />
@@ -41,7 +44,7 @@ const ShoppingCart = () => {
     
     </div>
 
-    <div className="right w-[50%] grid grid-rows-17 grid-cols-1 px-20 py-10  bg-gray-100">
+    <div className="right w-[50%] lg:grid   md:grid    hidden grid-rows-17 grid-cols-1 px-20 px-5 py-10   bg-gray-100">
     <div className="flex gap-5 items-center  row-span-full self-start place-content-start  ">
 
 <FontAwesomeIcon icon={faSearch}  className='fa-1x hover:opacity-80 hover:text-yellow-50'/>
@@ -73,8 +76,8 @@ const ShoppingCart = () => {
 
 
 <button className='flex gap-2 uppercase text-[12px] justify-center items-center'>
-<FontAwesomeIcon icon={faArrowLeft} />
-Back</button><button className='bg-myblack  px-10 py-2 text-white uppercase text-[7px] hover:bg-gray-400  '>Next Step</button></div>
+<NavLink to="/"> <FontAwesomeIcon icon={faArrowLeft} />
+Back  </NavLink></button><button className='bg-myblack  px-8 py-2 text-white uppercase text-[7px] hover:bg-gray-400  '>Next Step</button></div>
 
 
 
