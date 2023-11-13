@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faClose, faGrinHearts, faHeart, faNavicon, faSearch } from '@fortawesome/free-solid-svg-icons'
 import Nav from '../Assets/icons/Nav.svg'
-import { Link } from 'react-scroll'
-import { NavLink, useLocation } from 'react-router-dom'
+import { Link,scroller,animateScroll } from 'react-scroll'
+import { NavLink, useLocation, useNavigate} from 'react-router-dom'
 
 const NavBar = (props) => {
 
@@ -14,7 +14,19 @@ const NavBar = (props) => {
     const navShow="text-white    lg:flex flex lg:flex-row flex-col gap-10 items-center lg:relative lg:bg-inherit lg:w-auto lg:h-auto w-[100vw] h-[100vh] justify-center bg-myblack fixed row-span-full col-start-7" ;
 
   const location=useLocation().pathname;
+  
+  
+  const scroll=animateScroll;
+  
+const navigate=useNavigate();
+  const goToHome=async(element)=>{
 
+      
+      await scroll.scrollTo(element,{
+        duration:500,
+        smooth:true,
+        offset:-75,
+        spy:true});};
 
 
 
@@ -22,7 +34,7 @@ const NavBar = (props) => {
 
       
 
-    },[navActive ]);
+    },);
 
 
   return (
@@ -50,10 +62,10 @@ const NavBar = (props) => {
 
     
 </ul>):(<ul className={navActive?navShow :navHide}>
-<li className='relative w-auto flex flex-col hover:opacity-80 hover:text-yellow-50  gap-7'><NavLink activeClass="activenav" to="/" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-200} >About</NavLink></li>
-<li className='relative w-auto flex flex-col hover:opacity-80 hover:text-yellow-50 gap-7 '><NavLink activeClass="activenav" to="/" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-190} >Catalog</NavLink></li>
-<li className='relative w-auto flex flex-col  hover:opacity-80 hover:text-yellow-50 gap-7'><NavLink activeClass="activenav" to="#" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-200} >Delivery</NavLink></li>
-<li className='relative w-auto flex flex-col hover:opacity-80 hover:text-yellow-50 gap-7 '><NavLink activeClass="activenav" to="/" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-200} >Contacts</NavLink></li>
+<li className='relative w-auto flex flex-col  hover:opacity-80 hover:text-yellow-50  gap-7'><NavLink activeClass="activenav" to="#" onClick={goToHome("about")} className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow '  duration={500} smooth={true} spy={true}   offset={-200} >About</NavLink></li>
+<li className='relative w-auto flex flex-col  hover:opacity-80 hover:text-yellow-50 gap-7 '><NavLink activeClass="activenav" onClick={goToHome("about")} className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-190} >Catalog</NavLink></li>
+<li className='relative w-auto flex flex-col   hover:opacity-80 hover:text-yellow-50 gap-7'><NavLink activeClass="activenav" to="#" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow  '  duration={500} smooth={true} spy={true}   offset={-200} >Delivery</NavLink></li>
+<li className='relative w-auto flex flex-col  hover:opacity-80 hover:text-yellow-50 gap-7 '><NavLink activeClass="activenav" onClick={goToHome("contact")} className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-200} >Contacts</NavLink></li>
 
 {navActive?   (<FontAwesomeIcon icon={faClose} onClick={()=>{navActive?setNavActive(false):setNavActive(true)}} className='absolute top-10 left-10 flex lg:hidden'/> ) :null }
 
@@ -70,7 +82,7 @@ const NavBar = (props) => {
 
 <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50'/>
 <FontAwesomeIcon icon={faHeart} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50'/>
-<NavLink to="shoppingcart">
+<NavLink exact to="shoppingcart" >
 <FontAwesomeIcon icon={faCartShopping} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50'/>
 </NavLink>
 
