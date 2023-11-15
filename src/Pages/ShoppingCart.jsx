@@ -5,6 +5,7 @@ import RegularBtn from '../components/RegularBtn'
 import Cart from '../components/Cart'
 import { NavLink } from 'react-router-dom'
 import { CatalogList } from '../Data/CatalogList'
+import { JSXElementConstructor } from 'react'
 
 
 const ShoppingCart = () => {
