@@ -17,11 +17,22 @@ const NavBar = (props) => {
 
     const id=useParams();
     
+    
+
+    const [favLength,setFavLength]=useState();
+    
   
     useEffect(()=>{ 
+     
+      
 
 
+      const favouriteRaw=localStorage.getItem("favourite");
+      const favourite=JSON.parse(favouriteRaw);
 
+      setFavLength(favourite.length)
+      
+      console.log(favLength);
 
 
 
@@ -44,7 +55,12 @@ const NavBar = (props) => {
 
 
       }
+
+     
+
+
     }
+    
       
       )
   
@@ -75,7 +91,7 @@ const NavBar = (props) => {
 
     <nav className='bg-myblack w-full h-[80px] lg:grid flex grid-cols-12 justify-between fixed lg:px-[100px]  px-5 '>
     
-      <div className="nav-container flex p-5 items-center justify-between gap-20 hover:opacity-80 transition-all duration-700">  
+      <div className="nav-container flex xxs:p-5 p-0 items-center justify-between xxs:gap-20 gap-5 hover:opacity-80 transition-all duration-700">  
 <img src={Nav} alt="" srcset="" className='w-8 ' onClick={()=>{ navActive?setNavActive(false):setNavActive(true) }} />
 
 <div className="logo hover:opacity-80 hover:text-yellow-50 cursor-default text-white transition-all duration-1000">
@@ -118,11 +134,27 @@ const NavBar = (props) => {
 
 
 
-<div className="flex gap-5 items-center row-span-full lg:col-end-13 ">
+<div className="flex gap-5 items-center row-span-full lg:col-end-13  ">
 
 <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50'/>
+
+<NavLink className="relative">{ favLength>0 ? (
+  <div className="rounded-full w-2 h-2 flex justify-center items-center -top-1 left-3 bg-gray-300 p-2 absolute">
+  <p>{favLength}</p>
+</div>
+
+) :" "
+
+}
+
+
 <FontAwesomeIcon icon={faHeart} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50'/>
-<NavLink exact to="shoppingcart" onClick={()=>{setlocation('/shoppingcart')}} >
+</NavLink>
+
+<NavLink exact to="shoppingcart" onClick={()=>{setlocation('/shoppingcart')}}  >
+
+
+
 <FontAwesomeIcon icon={faCartShopping} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50'/>
 </NavLink>
 

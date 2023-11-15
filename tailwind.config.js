@@ -11,7 +11,12 @@ module.exports = {
         'myblack':'#1E2029',
   
   
-      },  },
+      },
+      screens:{
+
+        xxs:'361px',
+
+      } },
   },
   plugins: [],
 }

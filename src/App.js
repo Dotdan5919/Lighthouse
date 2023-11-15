@@ -41,6 +41,19 @@ const router= createBrowserRouter(
 
 function App() {
 
+  let Cart=[];
+  let Favourite=[];
+
+  let stringfyCart=JSON.stringify(Cart);
+  let stringfyFav=JSON.stringify(Favourite);
+
+   localStorage.setItem("cart",stringfyCart);
+   localStorage.setItem("favourite",stringfyFav);
+
+
+  //  const val= JSON.parse(localStorage.getItem("cart"));
+  //  console.log()
+
   
 
   return (

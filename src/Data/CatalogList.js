@@ -37,48 +37,7 @@
         price:'$299',
         image:'https://images.unsplash.com/photo-1560851668-e96ae9cfe945?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGxhbXBzfGVufDB8fDB8fHww',
        },
-       {
-        id:4,
-        name:'Eglo Vintage',
-        description:'Since our humble beginnings in 2006, LightHouse has significantly expanded its collection of exclusive',
-        price:'$299',
-        image:'https://images.unsplash.com/photo-1560851668-e96ae9cfe945?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGxhbXBzfGVufDB8fDB8fHww',
-       },
-       {
-        id:4,
-        name:'Eglo Vintage',
-        description:'Since our humble beginnings in 2006, LightHouse has significantly expanded its collection of exclusive',
-        price:'$299',
-        image:'https://images.unsplash.com/photo-1560851668-e96ae9cfe945?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGxhbXBzfGVufDB8fDB8fHww',
-       }
-    ,
-    {
-        id:4,
-        name:'Eglo Vintage',
-        description:'Since our humble beginnings in 2006, LightHouse has significantly expanded its collection of exclusive',
-        price:'$299',
-        image:'https://images.unsplash.com/photo-1560851668-e96ae9cfe945?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGxhbXBzfGVufDB8fDB8fHww',
-       }
-    ,
-    {
-        id:4,
-        name:'Eglo Vintage',
-        description:'Since our humble beginnings in 2006, LightHouse has significantly expanded its collection of exclusive',
-        price:'$299',
-        image:'https://images.unsplash.com/photo-1560851668-e96ae9cfe945?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGxhbXBzfGVufDB8fDB8fHww',
-       }
-    ,
-    {
-        id:4,
-        name:'Eglo Vintage',
-        description:'Since our humble beginnings in 2006, LightHouse has significantly expanded its collection of exclusive',
-        price:'$299',
-        image:'https://images.unsplash.com/photo-1560851668-e96ae9cfe945?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGxhbXBzfGVufDB8fDB8fHww',
-       }
-    
-    
-    
-    
+       
     
     
     

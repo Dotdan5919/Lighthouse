@@ -12,12 +12,12 @@ const ShoppingCart = () => {
     <div className='shadow-lg w-[100%] lg:h-[100vh] h-[100%] flex '>
    
       
-    <div className="left px-20 py-20 flex flex-col  ">
+    <div className="left sm:px-20 sm:py-20 py-20 px-2 flex flex-col  ">
     <div className="flex lg:flex-row flex-col justify-between p-7">
         <h1 className='font-bold text-[25px]'>Shopping Cart</h1>
         <p>in your bag 4 items</p>
     </div>
-    <div className="flex flex-col h-[90%] w-[100%]  overflow-scroll">
+    <div className="flex flex-col lg:h-[90%] h-[60%] w-[100%]  overflow-scroll">
         <hr />
         
 <Cart/>
@@ -25,6 +25,8 @@ const ShoppingCart = () => {
 <Cart/>
 <Cart/>
 <Cart/>
+<Cart/>
+
 
 
 
@@ -37,7 +39,28 @@ const ShoppingCart = () => {
 
     
     
-    
+    <div className="lg:hidden flex justify-between pt-5">
+<p className=' row-start-2 self-start place-items-start text-lg'>Total cost</p>
+<h1 className='font-bold text-2xl'>$14900</h1>
+
+</div>
+
+<div className="lg:hidden flex-col flex gap-7">
+
+<h1>Payment details</h1>
+<form action="" className='grid grid-col-2 grid-row-4 gap-2 h-[80%] ' >
+    <h1 className='font-bold col-span-2'>Payment Details
+    </h1>
+    <input type="text" className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300 text-white p-1' />
+    <input type="text"  className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300 text-white p-1'/>
+    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300 text-white p-1' />
+    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300 text-white p-1' />
+</form>
+
+<button className='bg-myblack text-white p-5 rounded-xl hover:bg-gray-500 hover:shadow-md   transition-all duration-200'>Proceed to checkout</button>
+
+</div>
+
     
     
     
