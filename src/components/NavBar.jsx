@@ -33,7 +33,7 @@ const NavBar = (props) => {
       setFavLength(favourite.length)
       
       console.log(favLength);
-
+      // window.addEventListener('storage', handleStorage())
 
 
       switch (id.id){
@@ -56,7 +56,7 @@ const NavBar = (props) => {
 
       }
 
-     
+      // return () => window.removeEventListener('storage', handleStorage())
 
 
     }

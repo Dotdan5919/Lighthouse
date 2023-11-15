@@ -90,13 +90,10 @@ scroller.scrollTo('myScrollToElement', {
   }
  
  
-  useEffect((hide)=>{
+  useEffect(()=>{
 
-    
-    
-
-
-  },[catalogArray]);
+ 
+  });
  
  
 

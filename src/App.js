@@ -2,7 +2,7 @@
 import './App.css';
 
 // hooks
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import NavBar from './components/NavBar';
 
@@ -13,6 +13,7 @@ import ShoppingCart from './Pages/ShoppingCart';
 //other assets
 import { Route, RouterProvider, Routes, createBrowserRouter, createRoutesFromElements, } from 'react-router-dom';
 import RootLayouts from './RootLayouts/RootLayouts';
+
 
 
 const router= createBrowserRouter(
@@ -49,12 +50,11 @@ function App() {
 
    localStorage.setItem("cart",stringfyCart);
    localStorage.setItem("favourite",stringfyFav);
-
-
+   window.dispatchEvent(new Event('storage'))
+ 
+   const eventBus = new EventBus();
   //  const val= JSON.parse(localStorage.getItem("cart"));
   //  console.log()
-
-  
 
   return (
     
