@@ -4,6 +4,7 @@ import { faCartShopping, faClose, faGrinHearts, faHeart, faNavicon, faSearch } f
 import Nav from '../Assets/icons/Nav.svg'
 import { Link,scroller,animateScroll,Events } from 'react-scroll'
 import { NavLink, useLocation, useParams} from 'react-router-dom'
+import eventBus from '../eventBus'
 
 const NavBar = (props) => {
 
@@ -34,7 +35,9 @@ const NavBar = (props) => {
       
       console.log(favLength);
       // window.addEventListener('storage', handleStorage())
-
+      eventBus.on("couponApply", (data) =>
+      this.setState({ message: data.message })
+    );
 
       switch (id.id){
 

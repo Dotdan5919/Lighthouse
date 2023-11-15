@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import eventBus from '../eventBus'
 
 const Favouritebtn = ({name}) => {
 
@@ -20,6 +21,7 @@ const Favouritebtn = ({name}) => {
     
     localStorage.setItem('favourite', JSON.stringify(newVal));
     console.log(localStorage.getItem("favourite"));
+    eventBus.dispatch("couponApply", { message: "coupone applied" });
 
   };
   useEffect(()=>

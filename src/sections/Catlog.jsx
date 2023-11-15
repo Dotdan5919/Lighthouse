@@ -30,6 +30,9 @@ else{
   scrollOffset=1700;
    
 }
+
+
+eventBus.dispatch("couponApply", { message: "coupone applied" });
 }
 
 )
