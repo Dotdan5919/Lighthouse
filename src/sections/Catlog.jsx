@@ -32,7 +32,7 @@ else{
 }
 
 
-eventBus.dispatch("couponApply", { message: "coupone applied" });
+
 }
 
 )

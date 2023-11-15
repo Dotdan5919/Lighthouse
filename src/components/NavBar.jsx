@@ -21,6 +21,8 @@ const NavBar = (props) => {
     
 
     const [favLength,setFavLength]=useState();
+    const [cartLength,setCartLength]=useState();
+
     
   
     useEffect(()=>{ 
@@ -28,16 +30,29 @@ const NavBar = (props) => {
       
 
 
-      const favouriteRaw=localStorage.getItem("favourite");
-      const favourite=JSON.parse(favouriteRaw);
-
-      setFavLength(favourite.length)
+  
       
       console.log(favLength);
       // window.addEventListener('storage', handleStorage())
-      eventBus.on("couponApply", (data) =>
-      this.setState({ message: data.message })
-    );
+      eventBus.on("favAdded", (data) => {
+        const favouriteRaw=localStorage.getItem("favourite");
+        const favourite=JSON.parse(favouriteRaw);
+  
+        
+        setFavLength(favourite.length);
+      
+        // console.log({ message: data.message });
+      });
+      eventBus.on("cartAdded", (data) => {
+        const cartRaw=localStorage.getItem("cart");
+        const cart=JSON.parse(cartRaw);
+  
+        
+        setCartLength(cart.length);
+      
+        // console.log({ message: data.message });
+      });
+
 
       switch (id.id){
 
@@ -59,13 +74,10 @@ const NavBar = (props) => {
 
       }
 
-      // return () => window.removeEventListener('storage', handleStorage())
+      return () => eventBus.remove("favAdded") ;
 
 
-    }
-    
-      
-      )
+    },[id,eventBus] )
   
    
 
@@ -154,9 +166,16 @@ const NavBar = (props) => {
 <FontAwesomeIcon icon={faHeart} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50'/>
 </NavLink>
 
-<NavLink exact to="shoppingcart" onClick={()=>{setlocation('/shoppingcart')}}  >
+<NavLink exact to="shoppingcart" className="relative" onClick={()=>{setlocation('/shoppingcart')}}  >
 
+{ cartLength>0 ? (
+  <div className="rounded-full w-2 h-2 flex justify-center items-center -top-1 left-3 bg-gray-300 p-2 absolute">
+  <p>{cartLength}</p>
+</div>
 
+) :" "
+
+}
 
 <FontAwesomeIcon icon={faCartShopping} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50'/>
 </NavLink>

@@ -52,7 +52,7 @@ function App() {
    localStorage.setItem("favourite",stringfyFav);
    window.dispatchEvent(new Event('storage'))
  
-   const eventBus = new EventBus();
+   
   //  const val= JSON.parse(localStorage.getItem("cart"));
   //  console.log()
 

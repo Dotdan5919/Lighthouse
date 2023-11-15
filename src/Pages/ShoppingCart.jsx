@@ -4,9 +4,15 @@ import React from 'react'
 import RegularBtn from '../components/RegularBtn'
 import Cart from '../components/Cart'
 import { NavLink } from 'react-router-dom'
+import { CatalogList } from '../Data/CatalogList'
 
 
 const ShoppingCart = () => {
+    const localValues=localStorage.getItem("cart");
+    const arrayValues=JSON.parse(localValues);
+    
+   
+
   return (
    
     <div className='shadow-lg w-[100%] lg:h-[100vh] h-[100%] flex '>
@@ -19,13 +25,26 @@ const ShoppingCart = () => {
     </div>
     <div className="flex flex-col lg:h-[90%] h-[60%] w-[100%]  overflow-scroll">
         <hr />
+        {CatalogList.map((cat)=>{ 
+            if(arrayValues.includes(cat.name)){
+
+                return(  <div> <Cart name={cat.name} id={cat.id} image={cat.image} price={cat.price} description={cat.description} /> 
+                <hr/>
+                </div>); 
+            }
+           
+       
+             }
+            
+            
+            )
         
-<Cart/>
-<hr />
-<Cart/>
-<Cart/>
-<Cart/>
-<Cart/>
+        
+        }
+    
+
+
+
 
 
 

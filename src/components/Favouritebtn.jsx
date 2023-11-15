@@ -10,18 +10,16 @@ const Favouritebtn = ({name}) => {
     
     const favourite=localStorage.getItem("favourite");  //call for the favourite 
     const newVal=JSON.parse(favourite);  //convert  json
-    if(newVal.find((newV)=>{return newV===name})){
-
-// do nothing
-    }
-    else{
+    if (!newVal.includes(name)) {
       newVal.push(name);
+    } else {
+      newVal.splice(newVal.indexOf(name), 1);
     }
 
     
     localStorage.setItem('favourite', JSON.stringify(newVal));
     console.log(localStorage.getItem("favourite"));
-    eventBus.dispatch("couponApply", { message: "coupone applied" });
+    eventBus.dispatch("favAdded");
 
   };
   useEffect(()=>
