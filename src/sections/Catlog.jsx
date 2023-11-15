@@ -5,6 +5,9 @@ import { CatalogList } from '../Data/CatalogList.js';
 import RegularBtn from '../components/RegularBtn.jsx';
 import { animateScroll } from 'react-scroll';
 import { Element, scroller } from 'react-scroll';
+import eventBus from '../eventBus.js';
+
+
 const Catlog = () => {
    
   const[catalogArray,setCatlogArray]=useState(4);
