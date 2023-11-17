@@ -13,9 +13,10 @@ import ShoppingCart from './Pages/ShoppingCart';
 //other assets
 import { Route, RouterProvider, Routes, createBrowserRouter, createRoutesFromElements, } from 'react-router-dom';
 import RootLayouts from './RootLayouts/RootLayouts';
+import NoPage from './Pages/NoPage';
 
 
-
+// this is to link to the navbar layout
 const router= createBrowserRouter(
 
   createRoutesFromElements (
@@ -28,6 +29,8 @@ const router= createBrowserRouter(
 
 
 <Route path='shoppingCart'  element={<ShoppingCart/>}/>
+<Route path='*'  element={<NoPage/>   }/>
+
 
 
 </Route>
@@ -42,19 +45,11 @@ const router= createBrowserRouter(
 
 function App() {
 
-  let Cart=[];
-  let Favourite=[];
 
-  let stringfyCart=JSON.stringify(Cart);
-  let stringfyFav=JSON.stringify(Favourite);
-
-   localStorage.setItem("cart",stringfyCart);
-   localStorage.setItem("favourite",stringfyFav);
-   window.dispatchEvent(new Event('storage'))
+  
  
    
-  //  const val= JSON.parse(localStorage.getItem("cart"));
-  //  console.log()
+
 
   return (
     

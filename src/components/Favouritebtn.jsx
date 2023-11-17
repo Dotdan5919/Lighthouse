@@ -8,20 +8,52 @@ const Favouritebtn = ({name}) => {
   // add to favourite list
   const handleClick=()=>{
     
+
+
     const favourite=localStorage.getItem("favourite");  //call for the favourite 
-    const newVal=JSON.parse(favourite);  //convert  json
-    if (!newVal.includes(name)) {
-      newVal.push(name);
-    } else {
-      newVal.splice(newVal.indexOf(name), 1);
+    
+    if(favourite)
+    {
+
+      const newVal=JSON.parse(favourite);  //convert  json
+
+
+      if (!newVal.includes(name)) {
+        newVal.push(name);
+      } else {
+        newVal.splice(newVal.indexOf(name), 1);
+      }
+  
+      
+      localStorage.setItem('favourite', JSON.stringify(newVal));
+      console.log(localStorage.getItem("favourite"));
+      eventBus.dispatch("favAdded");
+  
+      console.error("i dey here favourite");
+      
+  
+  
     }
 
-    
-    localStorage.setItem('favourite', JSON.stringify(newVal));
-    console.log(localStorage.getItem("favourite"));
-    eventBus.dispatch("favAdded");
 
-  };
+  
+
+    else{
+      console.error("error guy");
+      let Favourite=[name];         //initiating Favourite array for storing favourite values
+
+  
+      let stringfyFav=JSON.stringify(Favourite);
+    
+     
+       localStorage.setItem("favourite",stringfyFav);
+
+       
+
+
+    }
+  }
+   
   useEffect(()=>
 
   {

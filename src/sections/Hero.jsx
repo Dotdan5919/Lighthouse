@@ -43,7 +43,7 @@ useEffect(()=>
         console.log("slider 3");
 
       break;
-hi
+
       default:
 
       console.log("slider 0");
