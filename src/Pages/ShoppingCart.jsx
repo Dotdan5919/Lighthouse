@@ -1,6 +1,6 @@
 import { faArrowLeft, faCartShopping, faClose, faHeart, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import RegularBtn from '../components/RegularBtn'
 import Cart from '../components/Cart'
 import { NavLink } from 'react-router-dom'
@@ -11,7 +11,22 @@ import { CatalogList } from '../Data/CatalogList'
 const ShoppingCart = () => {
     const localValues=localStorage.getItem("cart");
     const arrayValues=JSON.parse(localValues);
+
+    const[newArray,setNewArray]=useState(arrayValues);
     
+    
+    useEffect(
+()=>
+{
+
+
+
+    
+}
+
+
+
+    )
    
 
   return (
@@ -27,11 +42,26 @@ const ShoppingCart = () => {
     <div className="flex flex-col lg:h-[90%] h-[60%] w-[100%]  overflow-scroll">
         <hr />
         {CatalogList.map((cat)=>{ 
-            if(arrayValues.includes(cat.name)){
+            if(newArray.includes(cat.name)){
 
-                return(  <div> <Cart name={cat.name} id={cat.id} image={cat.image} price={cat.price} description={cat.description} /> 
+                return(  <div> <Cart name={cat.name} id={cat.id} image={cat.image} price={cat.price} changeArray={click=>setNewArray(click)} description={cat.description} /> 
                 <hr/>
                 </div>); 
+            }
+            else if(newArray.length===0)
+            {
+
+                return(
+                    <div>
+                    <div className="flex flex-col gap-y-3 mt-8">
+                    Your Cart is emptys
+                    </div>
+                    </div>
+
+
+                );
+                
+
             }
            
        

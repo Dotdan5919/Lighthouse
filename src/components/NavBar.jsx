@@ -20,15 +20,42 @@ const NavBar = (props) => {
     
     
 
+
+
     const [favLength,setFavLength]=useState();
     const [cartLength,setCartLength]=useState();
 
     
-  
     useEffect(()=>{ 
      
       
-
+      const favouriteRaw=localStorage.getItem("favourite");
+      const favourite=JSON.parse(favouriteRaw);
+      const cartRaw=localStorage.getItem("cart");
+      const cart=JSON.parse(cartRaw);
+      if(favourite && favourite.length>0)
+      {
+        setFavLength(favourite.length);
+  
+      }
+      else{
+        setFavLength(0);
+  
+      }
+  
+  
+      if(cart && cart.length>0)
+      {
+  
+        setCartLength(cart.length);
+  
+      }
+    
+      else{
+  
+        setCartLength(0);
+  
+      }
 
   
       
@@ -53,6 +80,9 @@ const NavBar = (props) => {
         // console.log({ message: data.message });
       });
 
+
+
+      
 
       switch (id.id){
 

@@ -13,9 +13,11 @@ import { Link } from 'react-scroll'
 
 const Hero = () => {
   const [slide,setSlide]=useState(1);
+  
 
 useEffect(()=>
 {
+  
   let sliderElement=document.getElementById('top-slider');
 
   switch(slide){
@@ -25,14 +27,14 @@ useEffect(()=>
         sliderElement.style.scrollBehavior="smooth";
   
         sliderElement.scrollLeft=-200;
-        console.log("slider 1");
+        
       break;
       case 2:
          
         sliderElement.style.scrollBehavior="smooth";
   
         sliderElement.scrollLeft=600;
-        console.log("slider 2");
+        
 
       break;
       case 3:
@@ -40,21 +42,25 @@ useEffect(()=>
         sliderElement.style.scrollBehavior="smooth";
   
         sliderElement.scrollLeft=1200;
-        console.log("slider 3");
+        
 
       break;
 
       default:
 
-      console.log("slider 0");
+     
 
   }
 
+  setTimeout(() => {
 
-
+    slide<3?setSlide(slide+1):setSlide(1)
+   
+     
+      }, 5000);
 }
 
-
+,[slide]
 
 
 )
@@ -62,18 +68,7 @@ useEffect(()=>
 
 
   
-// setTimeout(() => {
 
-//   if(slide===1){
-//     setSlide(2)
-//   }
-//   if(slide===2){
-//     setSlide(3)
-//   }
-//   if(slide===3){
-//     setSlide(1)
-//   }
-//    }, 6000);
     
   
 

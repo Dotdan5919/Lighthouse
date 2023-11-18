@@ -2,8 +2,33 @@ import { faArrowLeft, faCartShopping, faClose, faHeart, faSearch } from '@fortaw
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import RegularBtn from './RegularBtn'
+import eventBus from '../eventBus'
 
-const Cart = ({name,description,price,image}) => {
+const Cart = ({name,description,price,image,changeArray}) => {
+
+
+const handleClose=() =>
+
+
+{
+
+  const CartRaw=localStorage.getItem("cart");
+  const cart=JSON.parse(CartRaw);
+
+  if(cart.includes(name))
+  {
+
+    cart.splice(cart.indexOf(name),1);
+
+  }
+localStorage.setItem("cart",JSON.stringify(cart));
+changeArray(cart);
+eventBus.dispatch("cartAdded");
+
+
+console.error("i was clicked");
+
+}
 
 
 
@@ -28,7 +53,7 @@ const Cart = ({name,description,price,image}) => {
             <h1 className="price font-bold lg:col-start-9 lg:row-start-auto row-start-2 sm:col-start-5 xxs:col-start-6 col-start-7 self-center ">{price}</h1>
 
             <div className=" xxs:col-start-11 col-start-14    self-center" >
-            <FontAwesomeIcon icon={faClose} />
+            <FontAwesomeIcon icon={faClose} onClick={()=>handleClose()}  className='hover:shadow-lg'/>
             </div>
             </div>
   )
