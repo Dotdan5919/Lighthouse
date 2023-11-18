@@ -65,6 +65,7 @@ const handleCartMovementClick=(side)=>
     if(sum>CatalogList.length)
     {
       sum=catalogArray;
+      slideMe();
 
     }
     else{
