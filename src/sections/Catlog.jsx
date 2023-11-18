@@ -47,6 +47,7 @@ const handleCartMovementClick=(side)=>
     setSlideleft("slideleft") ;
     setTimeout(() => {
       setCatlogArray(x);  
+      
       animateScroll.scrollTo(window.innerHeight+scrollOffset);
     }, 400)
 
@@ -57,26 +58,27 @@ const handleCartMovementClick=(side)=>
   if(side==="previous")
   {
     sum=catalogArray-4;
-    slideMe(6);
+    slideMe(catalogArray-4);
+    
     
   }
   else if(side==="next"){
 
     sum=catalogArray+4;
-    if(sum>CatalogList.length)
+    if(catalogArray===CatalogList.length)
     {
       sum=catalogArray;
-      slideMe(6);
-
+      
     }
+  
     else{
 
-      slideMe(6);
+      slideMe(catalogArray+4);
       
     }
 
     
-    console.log(catalogArray);
+    
   }
 
  
@@ -180,3 +182,4 @@ return ( <CatlogCard name={cat.name} id={cat.id} description={cat.description} p
 }
 
 export default Catlog
+// the setcartlog array is not setting in the handle click function
