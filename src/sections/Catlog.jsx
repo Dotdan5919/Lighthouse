@@ -42,11 +42,11 @@ else{
 const handleCartMovementClick=(side)=>
 {
 
-  const slideMe =()=>
+  const slideMe =(x)=>
   {
     setSlideleft("slideleft") ;
     setTimeout(() => {
-      setCatlogArray(sum);  
+      setCatlogArray(x);  
       animateScroll.scrollTo(window.innerHeight+scrollOffset);
     }, 400)
 
@@ -57,7 +57,8 @@ const handleCartMovementClick=(side)=>
   if(side==="previous")
   {
     sum=catalogArray-4;
-    slideMe();
+    slideMe(6);
+    
   }
   else if(side==="next"){
 
@@ -65,14 +66,17 @@ const handleCartMovementClick=(side)=>
     if(sum>CatalogList.length)
     {
       sum=catalogArray;
-      slideMe();
+      slideMe(6);
 
     }
     else{
 
-
-      slideMe();
+      slideMe(6);
+      
     }
+
+    
+    console.log(catalogArray);
   }
 
  

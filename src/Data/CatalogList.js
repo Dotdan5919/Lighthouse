@@ -36,6 +36,13 @@
         description:'Since our humble beginnings in 2006, LightHouse has significantly expanded its collection of exclusive',
         price:'$499',
         image:'https://images.unsplash.com/photo-1587133966114-7f69b8803e1b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2hpbmVzZSUyMGxhbnRlcm58ZW58MHx8MHx8fDA%3D',
+       },
+       {
+        id:6,
+        name:'indian lantern',
+        description:'Since our humble beginnings in 2006, LightHouse has significantly expanded its collection of exclusive',
+        price:'$499',
+        image:'https://images.unsplash.com/photo-1587133966114-7f69b8803e1b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2hpbmVzZSUyMGxhbnRlcm58ZW58MHx8MHx8fDA%3D',
        }
        
     
