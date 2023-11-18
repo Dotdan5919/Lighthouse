@@ -46,35 +46,31 @@ const ShoppingCart = () => {
 
                 return(  <div> <Cart name={cat.name} id={cat.id} image={cat.image} price={cat.price} changeArray={click=>setNewArray(click)} description={cat.description} /> 
                 <hr/>
-                </div>); 
+                </div>);  }
             }
-            else if(newArray.length===0)
-            {
-
-                return(
-                    <div>
-                    <div className="flex flex-col gap-y-3 mt-8">
-                    Your Cart is emptys
-                    </div>
-                    </div>
-
-
-                );
-                
-
-            }
-           
-       
-             }
-            
-            
-            )
+) 
+          
+              
+    
+    }
         
         
-        }
     
 
 
+{  newArray.length<1?
+    (
+        
+        <div className="item lg:grid grid grid-cols-10 lg:grid-rows-none grid-rows-1   lg:grid-cols-11   p-7 lg:gap-20 ">
+        <h1 className="w-40"> 
+        Your Cart is empty
+        </h1>
+        </div>
+        
+
+
+    )
+:" " }
 
 
 

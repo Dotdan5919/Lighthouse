@@ -41,6 +41,7 @@ else{
 
 const handleCartMovementClick=(side)=>
 {
+  
   let dividen;
 
   if(side==="previous")
@@ -49,7 +50,8 @@ const handleCartMovementClick=(side)=>
   }
   else if(side==="next"){
 
-    dividen=-4;
+    
+    dividen=+4;
   }
 
  setSlideleft("slideleft") ;
