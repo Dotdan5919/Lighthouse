@@ -41,24 +41,41 @@ else{
 
 const handleCartMovementClick=(side)=>
 {
-  
-  let dividen;
+
+  const slideMe =()=>
+  {
+    setSlideleft("slideleft") ;
+    setTimeout(() => {
+      setCatlogArray(sum);  
+      animateScroll.scrollTo(window.innerHeight+scrollOffset);
+    }, 400)
+
+  }
+
+  let sum;
 
   if(side==="previous")
   {
-    dividen=-4;
+    sum=catalogArray-4;
+    slideMe();
   }
   else if(side==="next"){
 
-    
-    dividen=+4;
+    sum=catalogArray+4;
+    if(sum>CatalogList.length)
+    {
+      sum=catalogArray;
+
+    }
+    else{
+
+
+      slideMe();
+    }
   }
 
- setSlideleft("slideleft") ;
-  setTimeout(() => {
-    setCatlogArray(catalogArray+dividen);  
-    animateScroll.scrollTo(window.innerHeight+scrollOffset);
-  }, 400)
+ 
+
 
 
 }
@@ -90,6 +107,7 @@ const handleCartMovementClick=(side)=>
 
   if(firstIndex<1)
   {
+    // if the catalog slidere is in the first slide
     hide="w-40 hidden";
 
   }
@@ -100,6 +118,7 @@ const handleCartMovementClick=(side)=>
   }
   if(catalogArray>CatalogList.length)
   {
+    // if the catalog slider is in the last slide
 
     hide2="w-40 hidden";
   }
