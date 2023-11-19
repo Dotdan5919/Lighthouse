@@ -14,6 +14,7 @@ import ShoppingCart from './Pages/ShoppingCart';
 import { Route, RouterProvider, Routes, createBrowserRouter, createRoutesFromElements, } from 'react-router-dom';
 import RootLayouts from './RootLayouts/RootLayouts';
 import NoPage from './Pages/NoPage';
+import FavouritePage from './Pages/FavouritePage';
 
 
 // this is to link to the navbar layout
@@ -24,11 +25,14 @@ const router= createBrowserRouter(
     
 
 <Route path='/' index  element={<Homepage/>}/>
+<Route path='/favourite' index  element={ <FavouritePage/> }/>
 
-<Route path=':id'  element={<Homepage/>}/>
+
+
 
 
 <Route path='shoppingCart'  element={<ShoppingCart/>}/>
+<Route path=':id'  element={<Homepage/>}/>
 <Route path='*'  element={<NoPage/>   }/>
 
 

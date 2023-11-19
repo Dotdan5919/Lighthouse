@@ -1,29 +1,29 @@
-import { faArrowLeft, faCartShopping, faClose, faHeart, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, fafavouriteShopping, faClose, faHeart, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import RegularBtn from './RegularBtn'
 import eventBus from '../eventBus'
 
-const Cart = ({name,description,price,image,changeArray}) => {
+const Favourite = ({name,description,price,image,changeArray}) => {
 
-// comment
+
 const handleClose=() =>
 
 
 {
 
-  const CartRaw=localStorage.getItem("cart");
-  const cart=JSON.parse(CartRaw);
+  const favouriteRaw=localStorage.getItem("favourite");
+  const favourite=JSON.parse(favouriteRaw);
 
-  if(cart.includes(name))
+  if(favourite.includes(name))
   {
 
-    cart.splice(cart.indexOf(name),1);
+    favourite.splice(favourite.indexOf(name),1);
 
   }
-localStorage.setItem("cart",JSON.stringify(cart));
-changeArray(cart);
-eventBus.dispatch("cartAdded");
+localStorage.setItem("favourite",JSON.stringify(favourite));
+changeArray(favourite);
+eventBus.dispatch("favAdded");
 
 
 
@@ -59,4 +59,4 @@ eventBus.dispatch("cartAdded");
   )
 }
 
-export default Cart
+export default Favourite

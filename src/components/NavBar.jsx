@@ -183,7 +183,7 @@ const NavBar = (props) => {
 
 <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50'/>
 
-<NavLink className="relative">{ favLength>0 ? (
+<NavLink exact to="favourite" className="relative" onClick={()=>{setlocation('/favourite')}}>{ favLength>0 ? (
   <div className="rounded-full w-2 h-2 flex justify-center items-center -top-1 left-3 bg-gray-300 p-2 absolute">
   <p>{favLength}</p>
 </div>
