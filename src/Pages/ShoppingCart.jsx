@@ -9,6 +9,10 @@ import { CatalogList } from '../Data/CatalogList'
 
 
 const ShoppingCart = () => {
+
+    const [total,setTotal]=useState(0);
+
+
     const localValues=localStorage.getItem("cart");
     const arrayValues=JSON.parse(localValues);
 
@@ -37,7 +41,7 @@ const ShoppingCart = () => {
     <div className="left sm:px-20 sm:py-20 py-20 px-2 flex flex-col  ">
     <div className="flex lg:flex-row flex-col justify-between p-7">
         <h1 className='font-bold text-[25px]'>Shopping Cart</h1>
-        <p>in your bag 4 items</p>
+        <p>in your bag {newArray.length} { newArray.length<2?"item":"items"}</p>
     </div>
     <div className="flex flex-col lg:h-[90%] h-[60%] w-[100%]  overflow-scroll">
         <hr />
@@ -87,7 +91,7 @@ const ShoppingCart = () => {
     
     <div className="lg:hidden flex justify-between pt-5">
 <p className=' row-start-2 self-start place-items-start text-lg'>Total cost</p>
-<h1 className='font-bold text-2xl'>$14900</h1>
+<h1 className='font-bold text-2xl'>${}</h1>
 
 </div>
 
@@ -125,7 +129,7 @@ const ShoppingCart = () => {
 
 <div className="flex flex-col">
 <p className=' row-start-2 self-start place-items-start'>Total cost</p>
-<h1 className='font-bold text-2xl'>$14900</h1>
+<h1 className='font-bold text-2xl'>${}</h1>
 <p>have a promo code</p>
 </div>
 
