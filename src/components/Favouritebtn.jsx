@@ -21,7 +21,7 @@ const Favouritebtn = ({name}) => {
       if (!newVal.includes(name)) {
         newVal.push(name);
       } else {
-        newVal.splice(newVal.indexOf(name), 1);
+        newVal.splice(newVal.indexOf(name), 1);   
       }
   
       
@@ -48,7 +48,7 @@ const Favouritebtn = ({name}) => {
      
        localStorage.setItem("favourite",stringfyFav);
 
-       
+       eventBus.dispatch("favAdded"); 
 
 
     }

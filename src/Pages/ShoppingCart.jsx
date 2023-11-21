@@ -28,15 +28,14 @@ const ShoppingCart = () => {
     let Total=0;
     const[newArray,setNewArray]=useState(arrayValues);
 
-    // CatalogList.forEach(element => {
-    //     if(newArray.includes(element.name)){
-    //         const multiple=NumValues[arrayValues.indexOf(element.name)];
-            
-    //         Total+=element.price *multiple;
-    //           }
-        
-        
-    // });
+    CatalogList.forEach(element => {
+        if(newArray.includes(element.name)){
+            const multiple=NumValues[arrayValues.indexOf(element.name)];
+           
+            Total+=element.price *multiple;
+              }
+            }
+    );
      
      //total value
     const [total,setTotal]=useState(Total);
@@ -49,22 +48,12 @@ const ShoppingCart = () => {
          // console.log({ message: data.message });
        });
     
-    useEffect(
-()=>
-{
-  
     
-   
  
       
 
 
-        
-}
 
-
-
-    )
    
 
   return (
@@ -130,7 +119,7 @@ const ShoppingCart = () => {
     <div className="lg:hidden flex justify-between pt-5">
 <p className=' row-start-2 self-start place-items-start text-lg'>Total cost</p>
 
-<h1 className='font-bold text-2xl'>${total}</h1>
+<h1 className='font-bold text-2xl'>${Total}</h1>
 
 </div>
 

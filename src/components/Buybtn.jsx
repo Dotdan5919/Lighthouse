@@ -70,22 +70,8 @@ const handleClick=()=>{
 
 
 
-//     const cart=localStorage.getItem("cart"); 
-
-//      //call for the favourite 
-//   const newVal=JSON.parse(cart);  //convert  json
-//   if(!newVal.includes(name)){
-//     newVal.push(name);
-// // do nothing
-//   }
-//   else{
-   
-//     newVal.splice(newVal.indexOf(name),1);
-
-//   }
-
   
-//   localStorage.setItem('cart', JSON.stringify(newVal));
+
   eventBus.dispatch("cartAdded");
   console.log(localStorage.getItem("cart"));
 
