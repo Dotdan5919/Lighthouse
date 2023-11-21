@@ -10,20 +10,24 @@ import { CatalogList } from '../Data/CatalogList'
 
 const ShoppingCart = () => {
 
-    const [total,setTotal]=useState(0);
+    
 
 
     const localValues=localStorage.getItem("cart");
     const arrayValues=JSON.parse(localValues);
 
     const[newArray,setNewArray]=useState(arrayValues);
+    const [total,setTotal]=useState(0);
+    let Tot=0;
     
+   
+   
     
     useEffect(
 ()=>
 {
-
-
+    
+    
 
     
 }
@@ -47,7 +51,7 @@ const ShoppingCart = () => {
         <hr />
         {CatalogList.map((cat)=>{ 
             if(newArray.includes(cat.name)){
-
+                Tot+=cat.price;
                 return(  <div> <Cart name={cat.name} id={cat.id} image={cat.image} price={cat.price} changeArray={click=>setNewArray(click)} description={cat.description} /> 
                 <hr/>
                 </div>);  }
@@ -91,7 +95,7 @@ const ShoppingCart = () => {
     
     <div className="lg:hidden flex justify-between pt-5">
 <p className=' row-start-2 self-start place-items-start text-lg'>Total cost</p>
-<h1 className='font-bold text-2xl'>${}</h1>
+<h1 className='font-bold text-2xl'>${Tot}</h1>
 
 </div>
 

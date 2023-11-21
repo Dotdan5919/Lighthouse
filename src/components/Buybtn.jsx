@@ -30,7 +30,7 @@ const handleClick=()=>{
   
   localStorage.setItem('cart', JSON.stringify(newVal));
   eventBus.dispatch("cartAdded");
-  console.log(localStorage.getItem("cart"));
+
 
 }
 
