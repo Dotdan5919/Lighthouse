@@ -129,10 +129,10 @@ const ShoppingCart = () => {
 <form action="" className='grid grid-col-2 grid-row-4 gap-2 h-[80%] ' >
     <h1 className='font-bold col-span-2'>Payment Details
     </h1>
-    <input type="text" className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300 text-white p-1' />
-    <input type="text"  className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300 text-white p-1'/>
-    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300 text-white p-1' />
-    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300 text-white p-1' />
+    <input type="text" className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300  p-1 text-myblack' />
+    <input type="text"  className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300  p-1 text-myblack'/>
+    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300  p-1 text-myblack' />
+    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300  p-1 text-myblack' />
 </form>
 
 <button className='bg-myblack text-white p-5 rounded-xl hover:bg-gray-500 hover:shadow-md   transition-all duration-200'>Proceed to checkout</button>
@@ -164,10 +164,10 @@ const ShoppingCart = () => {
 <form action="" className='grid grid-col-2 grid-row-4 gap-2 h-[80%] ' >
     <h1 className='font-bold col-span-2'>Payment Details
     </h1>
-    <input type="text" className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300 text-white p-1' />
-    <input type="text"  className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300 text-white p-1'/>
-    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300 text-white p-1' />
-    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300 text-white p-1' />
+    <input type="text" className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300 text-myblack p-1' />
+    <input type="text"  className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300 text-myblack p-1'/>
+    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300 text-myblack p-1' />
+    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300 text-myblack p-1' />
 </form>
 
 
@@ -176,8 +176,8 @@ const ShoppingCart = () => {
 
 
 
-<button className='flex gap-2 uppercase text-[12px] justify-center items-center'>
-<NavLink to="/"> <FontAwesomeIcon icon={faArrowLeft} />
+<button className='flex gap-7 uppercase text-[12px] justify-center items-center'>
+<NavLink to="/" className="flex gap-2 items-center justify-center"> <FontAwesomeIcon icon={faArrowLeft} />
 Back  </NavLink></button><button className='bg-myblack  px-8 py-2 text-white uppercase text-[7px] hover:bg-gray-400  '>Next Step</button></div>
 
 
