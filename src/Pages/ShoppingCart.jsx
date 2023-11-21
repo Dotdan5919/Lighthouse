@@ -6,6 +6,7 @@ import Cart from '../components/Cart'
 import { NavLink } from 'react-router-dom'
 import { CatalogList } from '../Data/CatalogList'
 
+import eventBus from '../eventBus'
 
 
 const ShoppingCart = () => {
@@ -14,22 +15,51 @@ const ShoppingCart = () => {
 
 
     const localValues=localStorage.getItem("cart");
+    const localNumValues=localStorage.getItem("cartNum");
+    const NumValues=JSON.parse(localNumValues);
+
+
+
+   
+
+
     const arrayValues=JSON.parse(localValues);
 
+    let Total=0;
     const[newArray,setNewArray]=useState(arrayValues);
-    const [total,setTotal]=useState(0);
-    let Tot=0;
+
+    // CatalogList.forEach(element => {
+    //     if(newArray.includes(element.name)){
+    //         const multiple=NumValues[arrayValues.indexOf(element.name)];
+            
+    //         Total+=element.price *multiple;
+    //           }
+        
+        
+    // });
+     
+     //total value
+    const [total,setTotal]=useState(Total);
     
-   
-   
+      eventBus.on("cartAmountAdded", (data) => {
+       
+        
+        setTotal(Total);
+       
+         // console.log({ message: data.message });
+       });
     
     useEffect(
 ()=>
 {
+  
     
-    
+   
+ 
+      
 
-    
+
+        
 }
 
 
@@ -51,16 +81,20 @@ const ShoppingCart = () => {
         <hr />
         {CatalogList.map((cat)=>{ 
             if(newArray.includes(cat.name)){
-                Tot+=cat.price;
+                const multiple=NumValues[arrayValues.indexOf(cat.name)];
+                
+                Total+=cat.price *multiple;
                 return(  <div> <Cart name={cat.name} id={cat.id} image={cat.image} price={cat.price} changeArray={click=>setNewArray(click)} description={cat.description} /> 
                 <hr/>
                 </div>);  }
             }
+
 ) 
-          
-              
-    
-    }
+
+
+
+
+          }
         
         
     
@@ -95,7 +129,8 @@ const ShoppingCart = () => {
     
     <div className="lg:hidden flex justify-between pt-5">
 <p className=' row-start-2 self-start place-items-start text-lg'>Total cost</p>
-<h1 className='font-bold text-2xl'>${Tot}</h1>
+
+<h1 className='font-bold text-2xl'>${total}</h1>
 
 </div>
 
@@ -133,7 +168,7 @@ const ShoppingCart = () => {
 
 <div className="flex flex-col">
 <p className=' row-start-2 self-start place-items-start'>Total cost</p>
-<h1 className='font-bold text-2xl'>${}</h1>
+<h1 className='font-bold text-2xl'>${Total}</h1>
 <p>have a promo code</p>
 </div>
 

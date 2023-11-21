@@ -1,28 +1,72 @@
 import { faArrowLeft, faCartShopping, faClose, faHeart, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import RegularBtn from './RegularBtn'
 import eventBus from '../eventBus'
 
 const Cart = ({name,description,price,image,changeArray}) => {
 
-// comment
+// 
 
-const [value,setValue]=useState(1);
+
+
+const CartRaw=localStorage.getItem("cart"); //get the cart from local storage
+ const CartNumRaw=localStorage.getItem("cartNum");  //get the cart num from local storage
+
+ const cart=JSON.parse(CartRaw);   //convert the value
+ const cartNum=JSON.parse(CartNumRaw); //convert the value
+ const cartIndex=cart.indexOf(name); 
+ 
+
+
+
+
+
+
+
+
+const [value,setValue]=useState(cartNum[cartIndex]);
+
+
+useEffect(()=>
+
+{
+
+
+  cartNum.splice(cartIndex,1,value); //this means that anytime value changes the converted cart num array is replaced with the new value
+
+  localStorage.setItem("cartNum",JSON.stringify(cartNum));
+
+
+
+
+},[value])
+
+
+
 const handleClose=() =>{
 
-  const CartRaw=localStorage.getItem("cart");
-  const cart=JSON.parse(CartRaw);
+ 
+ 
+
+
 
   if(cart.includes(name))
   {
 
     cart.splice(cart.indexOf(name),1);
+    cartNum.splice(cart.indexOf(name),1);
+
+
 
   }
 localStorage.setItem("cart",JSON.stringify(cart));
+localStorage.setItem("cartNum",JSON.stringify(cartNum));
+
 changeArray(cart);
 eventBus.dispatch("cartAdded");
+eventBus.dispatch("cartAmountAdded");
+
 
 
 
@@ -35,6 +79,10 @@ const handlePlus=() =>
 
   if(value<7){ 
 setValue(value+1);
+eventBus.dispatch("cartAmountAdded");
+
+
+
 }
 
 }
@@ -46,6 +94,8 @@ const handleMinus=() =>
 
     
 setValue(value-1);
+eventBus.dispatch("cartAmountAdded");
+
 
 }
 
@@ -70,8 +120,10 @@ setValue(value-1);
 
 
             </div>
-
-            <h1 className="price font-bold lg:col-start-9 lg:row-start-auto row-start-2 sm:col-start-5 xxs:col-start-6 col-start-7 self-center ">${price}</h1>
+            <div className="lg:col-start-9 lg:row-start-auto row-start-2 sm:col-start-5 xxs:col-start-6 col-start-7 self-center"> 
+            <h1 className="price font-bold  ">${price}</h1>
+            <small className='text-[10px]'>${price *value}</small>
+            </div>
 
             <div className=" xxs:col-start-11 col-start-14    self-center" >
             <FontAwesomeIcon icon={faClose} onClick={()=>handleClose()}  className='hover:shadow-lg'/>

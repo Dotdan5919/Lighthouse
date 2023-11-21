@@ -3,7 +3,7 @@ import eventBus from '../eventBus';
 
 const Buybtn = ({name}) => {
 
-
+  // localStorage.clear();
     // add to cart list
 const handleClick=()=>{
     
@@ -12,23 +12,36 @@ const handleClick=()=>{
 
 
   const cart=localStorage.getItem("cart"); 
+  const cartNum=localStorage.getItem("cartNum"); 
+
+
+
   
-  if(cart)
+  if(cart && cartNum)
   { 
-      //call for the favourite 
-  const newVal=JSON.parse(cart);  //convert  json
+      //call for the cart
+  const newVal=JSON.parse(cart); 
+  const newValNum=JSON.parse(cartNum);  //convert  json
+   //convert  json
   if(!newVal.includes(name)){
     newVal.push(name);
+    newValNum.push(1);
+
 // do nothing
   }
   else{
    
     newVal.splice(newVal.indexOf(name),1);
+    newValNum.splice(newVal.indexOf(name),1);
+
 
   }
 
   
   localStorage.setItem('cart', JSON.stringify(newVal));
+  localStorage.setItem('cartNum', JSON.stringify(newValNum));
+  
+
   eventBus.dispatch("cartAdded");
 
 
@@ -39,13 +52,22 @@ const handleClick=()=>{
 
   else  {
 
-    let Cart=[name];              //initiating Cart array for storing Cart values
+    let Cart=[name];
+    let CartNum=[1];              //initiating Cart array for storing Cart values
+                  //initiating Cart array for storing Cart values
 
     let stringfyCart=JSON.stringify(Cart);
+    let stringfyCartNum=JSON.stringify(CartNum);
+
 
 
 
     localStorage.setItem("cart",stringfyCart);
+    localStorage.setItem("cartNum",stringfyCartNum);
+
+
+  
+
 
 
 //     const cart=localStorage.getItem("cart"); 

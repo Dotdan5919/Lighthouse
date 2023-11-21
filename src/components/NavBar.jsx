@@ -59,7 +59,7 @@ const NavBar = (props) => {
 
   
       
-      console.log(favLength);
+    
       // window.addEventListener('storage', handleStorage())
       eventBus.on("favAdded", (data) => {
         const favouriteRaw=localStorage.getItem("favourite");
