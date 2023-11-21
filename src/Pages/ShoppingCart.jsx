@@ -17,6 +17,8 @@ const ShoppingCart = () => {
     const arrayValues=JSON.parse(localValues);
 
     const[newArray,setNewArray]=useState(arrayValues);
+    const[sum,setSum]=useState([]);
+
     const [total,setTotal]=useState(0);
     let Tot=0;
     
@@ -51,8 +53,8 @@ const ShoppingCart = () => {
         <hr />
         {CatalogList.map((cat)=>{ 
             if(newArray.includes(cat.name)){
-                Tot+=cat.price;
-                return(  <div> <Cart name={cat.name} id={cat.id} image={cat.image} price={cat.price} changeArray={click=>setNewArray(click)} description={cat.description} /> 
+                
+                return(  <div> <Cart name={cat.name} id={cat.id} image={cat.image} price={cat.price} changeArray={click=>setNewArray(click)} description={cat.description} sum={(val)=>setSum(val)}/> 
                 <hr/>
                 </div>);  }
             }

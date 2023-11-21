@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import RegularBtn from './RegularBtn'
 import eventBus from '../eventBus'
 
-const Cart = ({name,description,price,image,changeArray}) => {
+const Cart = ({name,description,price,image,changeArray,...props}) => {
 
 // comment
 

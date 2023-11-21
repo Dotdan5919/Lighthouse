@@ -2,7 +2,7 @@ import React from 'react'
 import eventBus from '../eventBus';
 
 const Buybtn = ({name}) => {
-
+ 
 
     // add to cart list
 const handleClick=()=>{
@@ -12,18 +12,23 @@ const handleClick=()=>{
 
 
   const cart=localStorage.getItem("cart"); 
+  console.log(cart);
+  const cartNumber=localStorage.getItem("cartNumber");
   
-  if(cart)
+  if(cart && cartNumber)
   { 
       //call for the favourite 
   const newVal=JSON.parse(cart);  //convert  json
+  const newCartNum=JSON.parse(cartNumber);
   if(!newVal.includes(name)){
     newVal.push(name);
+    newCartNum.push(1);
 // do nothing
   }
   else{
    
     newVal.splice(newVal.indexOf(name),1);
+    newCartNum.splice(newCartNum.indexOf(1),1);
 
   }
 

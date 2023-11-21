@@ -8,6 +8,7 @@
         description:'Since our humble beginnings in 2006, LightHouse has significantly expanded its collection of exclusive',
         price:399,
         image:'https://images.unsplash.com/photo-1543512214-4f76e81f8bfc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGxhbXBzfGVufDB8fDB8fHww',
+        
        },
        {
         id:2,
