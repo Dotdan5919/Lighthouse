@@ -8,6 +8,8 @@ import { Element, scroller } from 'react-scroll';
 import eventBus from '../eventBus.js';     //this is a link to Eventbus that was created
 
 import Events from 'react-scroll';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 
  
 
@@ -17,8 +19,6 @@ const options = {
   smooth: true,
 };
 
-animateScroll.scrollToTop(options);
-
 
 
 const Catlog = () => {
@@ -27,6 +27,49 @@ const Catlog = () => {
   const[slideleft,setSlideleft]=useState("");     
   let scrollOffset;      ///this variable is used to calculate the extent to which a the browser scrolls when next is pressed on the catalog section
   //
+
+const[eventTriggered,setEventTriggered]=useState("");
+
+
+
+ 
+
+eventBus.on("cartAdded", (data) => {
+
+
+  setEventTriggered("Cart Added");
+
+
+});
+  
+
+
+eventBus.on("favAdded", (data) => {
+
+
+  setEventTriggered("Favourite Added");
+
+
+});
+eventBus.on("favRemoved", (data) => {
+
+
+  setEventTriggered("Favourite Removed");
+
+
+});
+
+eventBus.on("cartRemoved", (data) => {
+
+
+  setEventTriggered(   "Cart Removed");
+
+
+});
+
+
+
+
   useEffect(()=>{
   if(window.innerWidth>=1024){
 
@@ -44,10 +87,22 @@ else{
    
 }
 
+let timeOutThing;
+
+if(eventTriggered!="")
+{
+  clearTimeout(timeOutThing);
+  timeOutThing=setTimeout(() => {
+  
+setEventTriggered("");
+
+}, 3000);
+
+}
 
 
 }
-,[window.innerWidth]
+,[window.innerWidth,eventTriggered]
 )
  
  
@@ -178,6 +233,13 @@ const handleCartMovementClick=(side)=>
 return ( <CatlogCard name={cat.name} id={cat.id} description={cat.description} price={cat.price} source={cat.image} /> )
 
 })}
+
+
+
+{eventTriggered===""?"":(<div className="flex gap-4 justify-center items-center bg-myblack p-7 fixed bottom-10 w-70 text-white rounded-md  animate-bounce ">
+{eventTriggered.startsWith("C")? (<FontAwesomeIcon icon={faShoppingBag}/>) : (<FontAwesomeIcon icon={faHeart}/>)}
+{eventTriggered}
+</div> )}
 
 
 

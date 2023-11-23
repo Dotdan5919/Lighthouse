@@ -26,14 +26,14 @@ const handleClick=()=>{
   if(!newVal.includes(name)){
     newVal.push(name);
     newValNum.push(1);
-
+    eventBus.dispatch("cartAdded");
 // do nothing
   }
   else{
    
     newVal.splice(newVal.indexOf(name),1);
     newValNum.splice(newVal.indexOf(name),1);
-
+    eventBus.dispatch("cartRemoved");
 
   }
 
@@ -42,7 +42,7 @@ const handleClick=()=>{
   localStorage.setItem('cartNum', JSON.stringify(newValNum));
   
 
-  eventBus.dispatch("cartAdded");
+  
 
 
 }

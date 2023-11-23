@@ -20,14 +20,17 @@ const Favouritebtn = ({name}) => {
 
       if (!newVal.includes(name)) {
         newVal.push(name);
+        eventBus.dispatch("favAdded");
       } else {
-        newVal.splice(newVal.indexOf(name), 1);   
+        newVal.splice(newVal.indexOf(name), 1);  
+        eventBus.dispatch("favRemoved"); 
+
       }
   
       
       localStorage.setItem('favourite', JSON.stringify(newVal));
       console.log(localStorage.getItem("favourite"));
-      eventBus.dispatch("favAdded");
+     
   
       console.error("i dey here favourite");
       

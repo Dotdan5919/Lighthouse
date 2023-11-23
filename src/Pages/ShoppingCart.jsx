@@ -6,13 +6,15 @@ import Cart from '../components/Cart'
 import { NavLink } from 'react-router-dom'
 import { CatalogList } from '../Data/CatalogList'
 
+
 import eventBus from '../eventBus'
+import { animateScroll } from 'react-scroll'
 
 
 const ShoppingCart = () => {
 
     
-
+animateScroll.scrollToTop();
 
 
    
@@ -26,6 +28,7 @@ const ShoppingCart = () => {
         // setTotal(Total);
         eventBus.on("cartAmountAdded", (data) => {
 
+            let Total=0;
 
             
     const localNumValues=localStorage.getItem("cartNum");
@@ -157,7 +160,7 @@ const ShoppingCart = () => {
     <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300  p-1 text-myblack' />
 </form>
 
-<button className='bg-myblack text-white p-5 rounded-xl hover:bg-gray-500 hover:shadow-md   transition-all duration-200'>Proceed to checkout</button>
+<NavLink to="/login"><button className='bg-myblack text-white p-5 rounded-xl hover:bg-gray-500 hover:shadow-md   transition-all duration-200'> Proceed to checkout</button></NavLink>
 
 </div>
 
@@ -200,7 +203,7 @@ const ShoppingCart = () => {
 
 <button className='flex gap-7 uppercase text-[12px] justify-center items-center'>
 <NavLink to="/" className="flex gap-2 items-center justify-center"> <FontAwesomeIcon icon={faArrowLeft} />
-Back  </NavLink></button><button className='bg-myblack  px-8 py-2 text-white uppercase text-[7px] hover:bg-gray-400  '>Next Step</button></div>
+Back  </NavLink></button> <NavLink to="/login"><button className='bg-myblack  px-8 py-2 text-white uppercase text-[7px] hover:bg-gray-400  '>Next Step</button> </NavLink></div>
 
 
 

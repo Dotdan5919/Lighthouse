@@ -53,7 +53,22 @@ const router= createBrowserRouter(
 function App() {
 
 
-  
+  useEffect(()=>{
+
+    const test=[];
+
+if(localStorage.getItem("cart")){
+
+
+}
+else{ 
+    localStorage.setItem("cart",JSON.stringify(test));
+localStorage.setItem("favourite",JSON.stringify(test));
+localStorage.setItem("cartNum",JSON.stringify(test));
+}
+
+
+  },[])
  
    
 

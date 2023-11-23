@@ -34,7 +34,8 @@ const Favourite = ({name,description,price,image,changeArray}) => {
     newVal.push(name);
     newValNum.push(1);
 
-// do nothing
+
+
   }
   else{
    

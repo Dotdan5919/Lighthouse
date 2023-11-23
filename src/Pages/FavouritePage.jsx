@@ -37,7 +37,7 @@ const FavouritePage = () => {
         <h1 className='font-bold text-[25px]'>Favourite</h1>
         
     </div>
-    <div className="flex flex-col lg:h-[90%] h-[60%] w-[100%]  overflow-scroll">
+    <div className="flex flex-col lg:h-[100%] h-[100%] w-[100%]  overflow-scroll">
         <hr />
         {CatalogList.map((cat)=>{ 
             if(newArray.includes(cat.name)){
