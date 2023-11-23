@@ -80,7 +80,7 @@ const NavBar = (props) => {
         // console.log({ message: data.message });
       });
 
-
+      console.log(navActive);
 
       
 
@@ -134,10 +134,10 @@ const NavBar = (props) => {
 
   return (
 
-    <nav className='bg-myblack w-full h-[80px] lg:grid flex grid-cols-12 justify-between fixed lg:px-[100px]  px-5 '>
+    <nav className='bg-myblack w-full h-[80px] lg:grid flex grid-cols-12 justify-between fixed lg:px-[100px]   z-[999] '>
     
       <div className="nav-container flex xxs:p-5 p-0 items-center justify-between xxs:gap-20 gap-5 hover:opacity-80 transition-all duration-700">  
-<img src={Nav} alt="" srcset="" className='w-8 ' onClick={()=>{ navActive?setNavActive(false):setNavActive(true) }} />
+<img src={Nav} alt="" srcset="" className='w-8 flex lg:hidden ' onClick={()=>{ navActive?setNavActive(false):setNavActive(true) }} />
 
 <div className="logo hover:opacity-80 hover:text-yellow-50 cursor-default text-white transition-all duration-1000">
 <h1>
@@ -179,7 +179,7 @@ const NavBar = (props) => {
 
 
 
-<div className="flex gap-5 items-center row-span-full lg:col-end-13  ">
+<div className="flex gap-5 items-center row-span-full lg:col-end-13 lg:p-0 p-9 ">
 
 <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50'/>
 

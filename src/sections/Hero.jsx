@@ -13,7 +13,33 @@ import { Link } from 'react-scroll'
 
 const Hero = () => {
   const [slide,setSlide]=useState(1);
+
+  const runMe = ()=>{
+  setTimeout(() => {
+
+    setSlide(slide<3?slide+1:1);
+    
+  }, 6000);
+}
+
+
+  const timeoutSetter=(x)=>
+  {
+
+    
   
+  setTimeout((x) => {
+
+    setSlide(x);
+   
+
+
+     
+      }, 6000);   
+      
+      
+  }
+      
 
 useEffect(()=>
 {
@@ -27,6 +53,8 @@ useEffect(()=>
         sliderElement.style.scrollBehavior="smooth";
   
         sliderElement.scrollLeft=-200;
+        timeoutSetter(2);
+        runMe();
         
       break;
       case 2:
@@ -34,16 +62,16 @@ useEffect(()=>
         sliderElement.style.scrollBehavior="smooth";
   
         sliderElement.scrollLeft=600;
-        
-
+        timeoutSetter(3);
+        runMe();
       break;
       case 3:
          
         sliderElement.style.scrollBehavior="smooth";
   
         sliderElement.scrollLeft=1200;
-        
-
+        timeoutSetter(1);
+        runMe();
       break;
 
       default:
@@ -52,12 +80,9 @@ useEffect(()=>
 
   }
 
-  setTimeout(() => {
+  
 
-    slide<3?setSlide(slide+1):setSlide(1)
-   
-     
-      }, 5000);
+  
 }
 
 ,[slide]

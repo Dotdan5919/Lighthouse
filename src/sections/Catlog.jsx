@@ -7,7 +7,23 @@ import { animateScroll } from 'react-scroll';
 import { Element, scroller } from 'react-scroll';
 import eventBus from '../eventBus.js';     //this is a link to Eventbus that was created
 
+import Events from 'react-scroll';
 
+useEffect(
+()=>
+{
+
+
+
+
+
+  
+}
+
+
+
+
+)
 const Catlog = () => {
    
   const[catalogArray,setCatlogArray]=useState(4);  //setting the number of the array that would be displayed per time
