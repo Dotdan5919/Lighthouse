@@ -99,7 +99,7 @@ useEffect(()=>
 
 
   return (
-    <div className='bg-myblack w-[100vw] lg:h-[100vh] sm:h-[130vh] lg:block flex flex-col items-center justify-center ' id="hero">
+    <div className='bg-myblack w-[100vw]  sm-pb-0 pb-7  h-fit lg:block flex flex-col items-center justify-center ' id="hero">
       
 
 <div className="lg:grid lg:grid-cols-12 flex flex-col gap-5   lg:grid-flow-col justify-center w-[85%]   lg:h-[80vh]  pb-2 items-center"> 

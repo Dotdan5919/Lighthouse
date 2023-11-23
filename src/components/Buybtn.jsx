@@ -87,7 +87,7 @@ const handleClick=()=>{
 
 
   return (
-    <button className="bg-myblack  px-10 py-2 text-white uppercase text-[11px] hover:bg-gray-400 " onClick={handleClick}> Buy</button>
+    <button className="bg-myblack  w-11/12 px-10 py-2 text-white uppercase text-[11px] hover:bg-gray-400 " onClick={handleClick}> Buy</button>
   )
 }
 

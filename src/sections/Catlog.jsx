@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import CatlogCard from '../components/CatlogCard.jsx'
 
 import { CatalogList } from '../Data/CatalogList.js';
@@ -9,16 +9,7 @@ import eventBus from '../eventBus.js';     //this is a link to Eventbus that was
 
 import Events from 'react-scroll';
 
-useEffect(
-()=>
-{
-
-
-
-
-
-
-}
+ 
 
 const options = {
   // your options here, for example:
@@ -29,7 +20,7 @@ const options = {
 animateScroll.scrollToTop(options);
 
 
-)
+
 const Catlog = () => {
    
   const[catalogArray,setCatlogArray]=useState(4);  //setting the number of the array that would be displayed per time
@@ -60,6 +51,8 @@ else{
 )
  
  
+const cartref=useRef(null);
+
 
 const handleCartMovementClick=(side)=>
 {
@@ -70,7 +63,7 @@ const handleCartMovementClick=(side)=>
     setTimeout(() => {
       setCatlogArray(x);  
       
-      animateScroll.scrollTo(window.innerHeight+scrollOffset);
+
     }, 400)
 
   }
@@ -105,7 +98,7 @@ const handleCartMovementClick=(side)=>
 
  
 
-
+  cartref.current?.scrollIntoView({ behavior: 'smooth'  });
 
 }
 
@@ -173,7 +166,7 @@ const handleCartMovementClick=(side)=>
 
   return (
     <div className='flex gap-10 flex-col mt-10' id="catalog">
-    <h1 className="text-myblack font-bold text-xl" id='catalog'>
+    <h1 className="text-myblack font-bold text-xl" id='catalog' ref={cartref}>
     <Element name="myScrollToElement"  id='catalog'>
     Catalog</Element>
     </h1>

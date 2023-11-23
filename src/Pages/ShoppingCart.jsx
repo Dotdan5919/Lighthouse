@@ -14,43 +14,65 @@ const ShoppingCart = () => {
     
 
 
+
+   
+
+    let Total=0;
     const localValues=localStorage.getItem("cart");
+    const arrayValues=JSON.parse(localValues);
+    
+    const[newArray,setNewArray]=useState(arrayValues);
+   
+        // setTotal(Total);
+        eventBus.on("cartAmountAdded", (data) => {
+
+
+            
     const localNumValues=localStorage.getItem("cartNum");
     const NumValues=JSON.parse(localNumValues);
 
 
 
-   
+       
+            CatalogList.forEach(element => {
+                if(newArray.includes(element.name)){
+                    const multiple=NumValues[arrayValues.indexOf(element.name)];
+                   
+                    if( isNaN(multiple) || isNaN(element.price) ){
+                    
+                        
+                    }
+                    else{
+                        Total+=element.price *multiple;
+                    
+                        console.log(Total);
+
+                    }
+                    
+                      }
+                    }
+            );
+             
+                
+                setTotal(Total);
+               
+                 // console.log({ message: data.message });
+               });
 
 
-    const arrayValues=JSON.parse(localValues);
 
-    let Total=0;
-    const[newArray,setNewArray]=useState(arrayValues);
-
-    CatalogList.forEach(element => {
-        if(newArray.includes(element.name)){
-            const multiple=NumValues[arrayValues.indexOf(element.name)];
-           
-            Total+=element.price *multiple;
-              }
-            }
-    );
-     
      //total value
     const [total,setTotal]=useState(Total);
     
-      eventBus.on("cartAmountAdded", (data) => {
-       
-        
-        setTotal(Total);
-       
-         // console.log({ message: data.message });
-       });
     
     
  
-      
+      useEffect(()=>{
+
+            
+
+
+      },[total])
 
 
 
@@ -58,7 +80,7 @@ const ShoppingCart = () => {
 
   return (
    
-    <div className='shadow-lg w-[100%] lg:h-[100vh] h-[100%] flex '>
+    <div className='shadow-lg w-[100%] xl:h-[100vh] h-[100%] flex '>
    
       
     <div className="left sm:px-20 sm:py-20 py-20 px-2 flex flex-col  ">
@@ -70,9 +92,9 @@ const ShoppingCart = () => {
         <hr />
         {CatalogList.map((cat)=>{ 
             if(newArray.includes(cat.name)){
-                const multiple=NumValues[arrayValues.indexOf(cat.name)];
+                // const multiple=NumValues[arrayValues.indexOf(cat.name)];
                 
-                Total+=cat.price *multiple;
+                // Total+=cat.price *multiple;
                 return(  <div> <Cart name={cat.name} id={cat.id} image={cat.image} price={cat.price} changeArray={click=>setNewArray(click)} description={cat.description} /> 
                 <hr/>
                 </div>);  }
@@ -116,10 +138,10 @@ const ShoppingCart = () => {
 
     
     
-    <div className="lg:hidden flex justify-between pt-5">
+    <div className="xl:hidden flex justify-between pt-5">
 <p className=' row-start-2 self-start place-items-start text-lg'>Total cost</p>
 
-<h1 className='font-bold text-2xl'>${Total}</h1>
+<h1 className='font-bold text-2xl'>${total}</h1>
 
 </div>
 
@@ -145,7 +167,7 @@ const ShoppingCart = () => {
     
     </div>
 
-    <div className="right w-[50%] lg:grid   md:grid    hidden grid-rows-17 grid-cols-1 px-20 px-5 py-10   bg-gray-100">
+    <div className="right w-[50%] xl:grid       hidden grid-rows-17 grid-cols-1 px-20 px-5 py-10   bg-gray-100">
     <div className="flex gap-5 items-center  row-span-full self-start place-content-start  ">
 
 <FontAwesomeIcon icon={faSearch}  className='fa-1x hover:opacity-80 hover:text-yellow-50'/>
@@ -157,7 +179,7 @@ const ShoppingCart = () => {
 
 <div className="flex flex-col">
 <p className=' row-start-2 self-start place-items-start'>Total cost</p>
-<h1 className='font-bold text-2xl'>${Total}</h1>
+<h1 className='font-bold text-2xl'>${total}</h1>
 <p>have a promo code</p>
 </div>
 

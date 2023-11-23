@@ -35,8 +35,10 @@ useEffect(()=>
 
   cartNum.splice(cartIndex,1,value); //this means that anytime value changes the converted cart num array is replaced with the new value
 
+  console.log("cart ran");
   localStorage.setItem("cartNum",JSON.stringify(cartNum));
-
+  eventBus.dispatch("cartAmountAdded");
+  
 
 
 
@@ -65,7 +67,7 @@ localStorage.setItem("cartNum",JSON.stringify(cartNum));
 
 changeArray(cart);
 eventBus.dispatch("cartAdded");
-eventBus.dispatch("cartAmountAdded");
+  eventBus.dispatch("cartAmountAdded");
 
 
 
@@ -79,7 +81,7 @@ const handlePlus=() =>
 
   if(value<7){ 
 setValue(value+1);
-eventBus.dispatch("cartAmountAdded");
+
 
 
 
@@ -94,7 +96,7 @@ const handleMinus=() =>
 
     
 setValue(value-1);
-eventBus.dispatch("cartAmountAdded");
+
 
 
 }
