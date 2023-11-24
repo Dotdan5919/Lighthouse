@@ -44,32 +44,14 @@ const MotionInput = (props) => {
 
     }
 
-    // const handleValue =() =>
-
-    // {
-
-    //   ""?setEmptyInput(true):setEmptyInput(false);
-
-      
-    //   console.log(emptyInput);
-      
-    // }
+   
 
     useEffect(()=>
     
     
     {
 
-      // if(inputRef.current.value==="")
-      // {
-
-      //   setEmptyInput(true);
-      // }
-      // else{
-
-      //   setEmptyInput(false);
-
-      // }
+    
      
 
 

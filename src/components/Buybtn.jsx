@@ -26,6 +26,9 @@ const handleClick=()=>{
   if(!newVal.includes(name)){
     newVal.push(name);
     newValNum.push(1);
+    localStorage.setItem('cart', JSON.stringify(newVal));
+    localStorage.setItem('cartNum', JSON.stringify(newValNum));
+    
     eventBus.dispatch("cartAdded");
 // do nothing
   }
@@ -33,14 +36,15 @@ const handleClick=()=>{
    
     newVal.splice(newVal.indexOf(name),1);
     newValNum.splice(newVal.indexOf(name),1);
+    localStorage.setItem('cart', JSON.stringify(newVal));
+    localStorage.setItem('cartNum', JSON.stringify(newValNum));
+    
     eventBus.dispatch("cartRemoved");
 
   }
 
   
-  localStorage.setItem('cart', JSON.stringify(newVal));
-  localStorage.setItem('cartNum', JSON.stringify(newValNum));
-  
+
 
   
 
@@ -73,7 +77,7 @@ const handleClick=()=>{
   
 
   eventBus.dispatch("cartAdded");
-  console.log(localStorage.getItem("cart"));
+ 
 
 }
 

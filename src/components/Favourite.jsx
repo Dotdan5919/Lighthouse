@@ -33,6 +33,8 @@ const Favourite = ({name,description,price,image,changeArray}) => {
   if(!newVal.includes(name)){
     newVal.push(name);
     newValNum.push(1);
+    
+  eventBus.dispatch("cartAdded");
 
 
 
@@ -52,7 +54,6 @@ const Favourite = ({name,description,price,image,changeArray}) => {
   localStorage.setItem('favourite',JSON.stringify(newFav));
   
 
-  eventBus.dispatch("cartAdded");
   eventBus.dispatch("favAdded");
   changeArray(newFav);
 
@@ -75,7 +76,7 @@ const Favourite = ({name,description,price,image,changeArray}) => {
 
     newFav.splice(newFav.indexOf(name),1);
 
-
+    eventBus.dispatch("favRemoved");
     localStorage.setItem("cart",stringfyCart);
     localStorage.setItem("cartNum",stringfyCartNum);
     localStorage.setItem('favourite',JSON.stringify(newFav));
@@ -88,7 +89,7 @@ const Favourite = ({name,description,price,image,changeArray}) => {
   
 
   eventBus.dispatch("cartAdded");
-  eventBus.dispatch("favAdded");
+
   changeArray(newFav);
 
 
@@ -111,6 +112,7 @@ const handleClose=() =>
   {
 
     favourite.splice(favourite.indexOf(name),1);
+    eventBus.dispatch("favRemoved");
 
   }
 localStorage.setItem("favourite",JSON.stringify(favourite));

@@ -62,7 +62,7 @@ eventBus.on("favRemoved", (data) => {
 eventBus.on("cartRemoved", (data) => {
 
 
-  setEventTriggered(   "Cart Removed");
+  setEventTriggered("Cart Removed");
 
 
 });

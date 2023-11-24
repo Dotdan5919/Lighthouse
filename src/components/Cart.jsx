@@ -35,7 +35,7 @@ useEffect(()=>
 
   cartNum.splice(cartIndex,1,value); //this means that anytime value changes the converted cart num array is replaced with the new value
 
-  console.log("cart ran");
+ 
   localStorage.setItem("cartNum",JSON.stringify(cartNum));
   eventBus.dispatch("cartAmountAdded");
   

@@ -21,9 +21,53 @@ const NavBar = (props) => {
     
 
 
+      // window.addEventListener('storage', handleStorage())
+      eventBus.on("favAdded", (data) => {
+        
+        const favouriteRaw=localStorage.getItem("favourite");
+        const favourite=JSON.parse(favouriteRaw);
+  
+        
+        setFavLength(favourite.length);
+      
+        // console.log({ message: data.message });
+      });
+      eventBus.on("cartAdded", (data) => {
+        
+        const cartRaw=localStorage.getItem("cart");
+        const cart=JSON.parse(cartRaw);
+  
+        
+        setCartLength(cart.length);
+      
+        // console.log({ message: data.message });
+      });
+
+      eventBus.on("favRemoved", (data) => {
+        
+        const favouriteRaw=localStorage.getItem("favourite");
+        const favourite=JSON.parse(favouriteRaw);
+  
+        
+        setFavLength(favourite.length);
+      
+        // console.log({ message: data.message });
+      });
+      eventBus.on("cartRemoved", (data) => {
+        
+        const cartRaw=localStorage.getItem("cart");
+        const cart=JSON.parse(cartRaw);
+  
+        
+        setCartLength(cart.length);
+      
+        // console.log({ message: data.message });
+      });
+
 
     const [favLength,setFavLength]=useState();
     const [cartLength,setCartLength]=useState();
+    
 
     
     useEffect(()=>{ 
@@ -60,26 +104,6 @@ const NavBar = (props) => {
   
       
     
-      // window.addEventListener('storage', handleStorage())
-      eventBus.on("favAdded", (data) => {
-        const favouriteRaw=localStorage.getItem("favourite");
-        const favourite=JSON.parse(favouriteRaw);
-  
-        
-        setFavLength(favourite.length);
-      
-        // console.log({ message: data.message });
-      });
-      eventBus.on("cartAdded", (data) => {
-        const cartRaw=localStorage.getItem("cart");
-        const cart=JSON.parse(cartRaw);
-  
-        
-        setCartLength(cart.length);
-      
-        // console.log({ message: data.message });
-      });
-
       console.log(navActive);
 
       
@@ -104,10 +128,10 @@ const NavBar = (props) => {
 
       }
 
-      return () => eventBus.remove("favAdded") ;
+      
 
 
-    },[id,eventBus] )
+    } ,[id])
   
    
 
