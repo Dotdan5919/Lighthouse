@@ -21,9 +21,53 @@ const NavBar = (props) => {
     
 
 
+      // window.addEventListener('storage', handleStorage())
+      eventBus.on("favAdded", (data) => {
+        
+        const favouriteRaw=localStorage.getItem("favourite");
+        const favourite=JSON.parse(favouriteRaw);
+  
+        
+        setFavLength(favourite.length);
+      
+        // console.log({ message: data.message });
+      });
+      eventBus.on("cartAdded", (data) => {
+        
+        const cartRaw=localStorage.getItem("cart");
+        const cart=JSON.parse(cartRaw);
+  
+        
+        setCartLength(cart.length);
+      
+        // console.log({ message: data.message });
+      });
+
+      eventBus.on("favRemoved", (data) => {
+        
+        const favouriteRaw=localStorage.getItem("favourite");
+        const favourite=JSON.parse(favouriteRaw);
+  
+        
+        setFavLength(favourite.length);
+      
+        // console.log({ message: data.message });
+      });
+      eventBus.on("cartRemoved", (data) => {
+        
+        const cartRaw=localStorage.getItem("cart");
+        const cart=JSON.parse(cartRaw);
+  
+        
+        setCartLength(cart.length);
+      
+        // console.log({ message: data.message });
+      });
+
 
     const [favLength,setFavLength]=useState();
     const [cartLength,setCartLength]=useState();
+    
 
     
     useEffect(()=>{ 
@@ -59,28 +103,8 @@ const NavBar = (props) => {
 
   
       
-      console.log(favLength);
-      // window.addEventListener('storage', handleStorage())
-      eventBus.on("favAdded", (data) => {
-        const favouriteRaw=localStorage.getItem("favourite");
-        const favourite=JSON.parse(favouriteRaw);
-  
-        
-        setFavLength(favourite.length);
-      
-        // console.log({ message: data.message });
-      });
-      eventBus.on("cartAdded", (data) => {
-        const cartRaw=localStorage.getItem("cart");
-        const cart=JSON.parse(cartRaw);
-  
-        
-        setCartLength(cart.length);
-      
-        // console.log({ message: data.message });
-      });
-
-
+    
+      console.log(navActive);
 
       
 
@@ -104,10 +128,10 @@ const NavBar = (props) => {
 
       }
 
-      return () => eventBus.remove("favAdded") ;
+      
 
 
-    },[id,eventBus] )
+    } ,[id])
   
    
 
@@ -134,10 +158,10 @@ const NavBar = (props) => {
 
   return (
 
-    <nav className='bg-myblack w-full h-[80px] lg:grid flex grid-cols-12 justify-between fixed lg:px-[100px]  px-5 '>
+    <nav className='bg-myblack w-full h-[80px] lg:grid flex grid-cols-12 justify-between fixed lg:px-[100px]   z-[999] '>
     
       <div className="nav-container flex xxs:p-5 p-0 items-center justify-between xxs:gap-20 gap-5 hover:opacity-80 transition-all duration-700">  
-<img src={Nav} alt="" srcset="" className='w-8 ' onClick={()=>{ navActive?setNavActive(false):setNavActive(true) }} />
+<img src={Nav} alt="" srcset="" className='w-8 flex lg:hidden ' onClick={()=>{ navActive?setNavActive(false):setNavActive(true) }} />
 
 <div className="logo hover:opacity-80 hover:text-yellow-50 cursor-default text-white transition-all duration-1000">
 <h1>
@@ -154,19 +178,19 @@ const NavBar = (props) => {
 
 { location==="/"?
 (<ul className={navActive?navShow :navHide}>
-    <li className='relative w-auto flex flex-col hover:opacity-80 hover:text-yellow-50  gap-7  cursor-pointer'><Link activeClass="activenav" to="about" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-200} >About</Link></li>
-    <li className='relative w-auto flex flex-col hover:opacity-80 hover:text-yellow-50 gap-7   cursor-pointer'><Link activeClass="activenav" to="catalog" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-190} >Catalog</Link></li>
-    <li className='relative w-auto flex flex-col  hover:opacity-80 hover:text-yellow-50 gap-7  cursor-pointer' onClick={()=>{setlocation('/shoppingcart')}}><NavLink activeClass="activenav" to="shoppingcart" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-200} >Delivery</NavLink></li>
-    <li className='relative w-auto flex flex-col hover:opacity-80 hover:text-yellow-50 gap-7   cursor-pointer'><Link activeClass="activenav" to="footer" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-200} >Contacts</Link></li>
+    <li className='relative w-auto flex flex-col hover:opacity-80 hover:text-yellow-50  gap-7  cursor-pointer' onClick={()=>{setNavActive(false);alert("hi")}}><Link activeClass="activenav" to="about" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-200} onClick={()=>{setNavActive(false)}} >About</Link></li>
+    <li className='relative w-auto flex flex-col hover:opacity-80 hover:text-yellow-50 gap-7   cursor-pointer' onClick={()=>{setNavActive(false);alert("hi")}}><Link activeClass="activenav" to="catalog" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-190} onClick={()=>{setNavActive(false)}}>Catalog</Link></li>
+    <li className='relative w-auto flex flex-col  hover:opacity-80 hover:text-yellow-50 gap-7  cursor-pointer' onClick={()=>{setlocation('/shoppingcart');setNavActive(false)}}><NavLink activeClass="activenav" to="shoppingcart" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-200} onClick={()=>{setNavActive(false)}} >Delivery</NavLink></li>
+    <li className='relative w-auto flex flex-col hover:opacity-80 hover:text-yellow-50 gap-7   cursor-pointer' ><Link activeClass="activenav" to="footer" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-200} onClick={()=>{setNavActive(false)}} >Contacts</Link></li>
 
     {navActive?   (<FontAwesomeIcon icon={faClose} onClick={()=>{navActive?setNavActive(false):setNavActive(true)}} className='absolute top-10 left-10 flex lg:hidden'/> ) :null }
 
     
 </ul>):(<ul className={navActive?navShow :navHide} >
-<li className='relative w-auto flex flex-col  hover:opacity-80 hover:text-yellow-50  gap-7' onClick={()=>{setlocation('/')}}><NavLink activeClass="activenav" to="about"  className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow '  duration={500} smooth={true} spy={true}   offset={-200} >About</NavLink></li>
-<li className='relative w-auto flex flex-col  hover:opacity-80 hover:text-yellow-50 gap-7 ' onClick={()=>{setlocation('/')}}><NavLink activeClass="activenav" to="catalog" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-190} >Catalog</NavLink></li>
-<li className='relative w-auto flex flex-col   hover:opacity-80 hover:text-yellow-50 gap-7 ' onClick={()=>{setlocation('/shoppingcart')}}><NavLink activeClass="activenav" to="shoppingcart" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow  '  duration={500} smooth={true} spy={true}   offset={-200} >Delivery</NavLink></li>
-<li className='relative w-auto flex flex-col  hover:opacity-80 hover:text-yellow-50 gap-7 ' onClick={()=>{setlocation('/')}}><NavLink activeClass="activenav" to="contact" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-200} >Contacts</NavLink></li>
+<li className='relative w-auto flex flex-col  hover:opacity-80 hover:text-yellow-50  gap-7' onClick={()=>{setlocation('/');setNavActive(false)}}><NavLink activeClass="activenav" to="about"  className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow '  duration={500} smooth={true} spy={true}   offset={-200} >About</NavLink></li>
+<li className='relative w-auto flex flex-col  hover:opacity-80 hover:text-yellow-50 gap-7 ' onClick={()=>{setlocation('/');setNavActive(false)}}><NavLink activeClass="activenav" to="catalog" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-190} >Catalog</NavLink></li>
+<li className='relative w-auto flex flex-col   hover:opacity-80 hover:text-yellow-50 gap-7 ' onClick={()=>{setlocation('/shoppingcart');setNavActive(false)}}><NavLink activeClass="activenav" to="shoppingcart" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow  '  duration={500} smooth={true} spy={true}   offset={-200} >Delivery</NavLink></li>
+<li className='relative w-auto flex flex-col  hover:opacity-80 hover:text-yellow-50 gap-7 ' onClick={()=>{setlocation('/');setNavActive(false)}}><NavLink activeClass="activenav" to="contact" className='after:block after:border after:rounded-lg after:hidden hover:after:flex  after:border-yellow'  duration={500} smooth={true} spy={true}   offset={-200} >Contacts</NavLink></li>
 
 {navActive?   (<FontAwesomeIcon icon={faClose} onClick={()=>{navActive?setNavActive(false):setNavActive(true)}} className='absolute top-10 left-10 flex lg:hidden'/> ) :null }
 
@@ -179,7 +203,7 @@ const NavBar = (props) => {
 
 
 
-<div className="flex gap-5 items-center row-span-full lg:col-end-13  ">
+<div className="flex gap-5 items-center row-span-full lg:col-end-13 lg:p-0 p-9 ">
 
 <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50'/>
 

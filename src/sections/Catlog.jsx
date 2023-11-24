@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import CatlogCard from '../components/CatlogCard.jsx'
 
 import { CatalogList } from '../Data/CatalogList.js';
@@ -7,6 +7,19 @@ import { animateScroll } from 'react-scroll';
 import { Element, scroller } from 'react-scroll';
 import eventBus from '../eventBus.js';     //this is a link to Eventbus that was created
 
+import Events from 'react-scroll';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+
+ 
+
+const options = {
+  // your options here, for example:
+  duration: 500,
+  smooth: true,
+};
+
+
 
 const Catlog = () => {
    
@@ -14,6 +27,49 @@ const Catlog = () => {
   const[slideleft,setSlideleft]=useState("");     
   let scrollOffset;      ///this variable is used to calculate the extent to which a the browser scrolls when next is pressed on the catalog section
   //
+
+const[eventTriggered,setEventTriggered]=useState("");
+
+
+
+ 
+
+eventBus.on("cartAdded", (data) => {
+
+
+  setEventTriggered("Cart Added");
+
+
+});
+  
+
+
+eventBus.on("favAdded", (data) => {
+
+
+  setEventTriggered("Favourite Added");
+
+
+});
+eventBus.on("favRemoved", (data) => {
+
+
+  setEventTriggered("Favourite Removed");
+
+
+});
+
+eventBus.on("cartRemoved", (data) => {
+
+
+  setEventTriggered("Cart Removed");
+
+
+});
+
+
+
+
   useEffect(()=>{
   if(window.innerWidth>=1024){
 
@@ -32,13 +88,27 @@ else{
    
 }
 
+let timeOutThing;
+
+if(eventTriggered!="")
+{
+  clearTimeout(timeOutThing);
+  timeOutThing=setTimeout(() => {
+  
+setEventTriggered("");
+
+}, 3000);
+
+}
 
 
 }
-,[window.innerWidth]
+,[window.innerWidth,eventTriggered]
 )
  
  
+const cartref=useRef(null);
+
 
 const handleCartMovementClick=(side)=>
 {
@@ -49,7 +119,7 @@ const handleCartMovementClick=(side)=>
     setTimeout(() => {
       setCatlogArray(x);  
       
-      animateScroll.scrollTo(window.innerHeight+scrollOffset);
+
     }, 400)
 
   }
@@ -84,7 +154,7 @@ const handleCartMovementClick=(side)=>
 
  
 
-
+  cartref.current?.scrollIntoView({ behavior: 'smooth'  });
 
 }
 
@@ -152,7 +222,7 @@ const handleCartMovementClick=(side)=>
 
   return (
     <div className='flex gap-10 flex-col mt-10' id="catalog">
-    <h1 className="text-myblack font-bold text-xl" id='catalog'>
+    <h1 className="text-myblack font-bold text-xl" id='catalog' ref={cartref}>
     <Element name="myScrollToElement"  id='catalog'>
     Catalog</Element>
     </h1>
@@ -164,6 +234,13 @@ const handleCartMovementClick=(side)=>
 return ( <CatlogCard name={cat.name} id={cat.id} description={cat.description} price={cat.price} source={cat.image} /> )
 
 })}
+
+
+
+{eventTriggered===""?"":(<div className="flex gap-4 justify-center items-center bg-myblack p-7 fixed bottom-10 w-70 text-white rounded-md  animate-bounce ">
+{eventTriggered.startsWith("C")? (<FontAwesomeIcon icon={faShoppingBag}/>) : (<FontAwesomeIcon icon={faHeart}/>)}
+{eventTriggered}
+</div> )}
 
 
 

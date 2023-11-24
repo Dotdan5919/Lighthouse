@@ -16,12 +16,14 @@ const CatlogCard = (props) => {
         <p className='text-[10px]'>{props.description}</p> </div>
         <div className='flex  gap-4 items-center h-10 justify-between'>
         <h1 className='font-bold'>${props.price}</h1>
-        <Buybtn name={props.name} />
+        <Buybtn name={props.name}   />
         <Favouritebtn name={props.name}/>
 
         </div>
     </div>
 
+
+    
     </div>
   )
 }

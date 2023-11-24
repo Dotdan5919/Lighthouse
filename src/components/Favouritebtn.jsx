@@ -20,17 +20,18 @@ const Favouritebtn = ({name}) => {
 
       if (!newVal.includes(name)) {
         newVal.push(name);
+        localStorage.setItem('favourite', JSON.stringify(newVal));
+        eventBus.dispatch("favAdded");
       } else {
-        newVal.splice(newVal.indexOf(name), 1);
+        newVal.splice(newVal.indexOf(name), 1); 
+        localStorage.setItem('favourite', JSON.stringify(newVal)); 
+        eventBus.dispatch("favRemoved"); 
+
       }
   
       
-      localStorage.setItem('favourite', JSON.stringify(newVal));
-      console.log(localStorage.getItem("favourite"));
-      eventBus.dispatch("favAdded");
-  
-      console.error("i dey here favourite");
-      
+     
+   
   
   
     }
@@ -39,7 +40,7 @@ const Favouritebtn = ({name}) => {
   
 
     else{
-      console.error("error guy");
+      
       let Favourite=[name];         //initiating Favourite array for storing favourite values
 
   
@@ -48,7 +49,7 @@ const Favouritebtn = ({name}) => {
      
        localStorage.setItem("favourite",stringfyFav);
 
-       
+       eventBus.dispatch("favAdded"); 
 
 
     }

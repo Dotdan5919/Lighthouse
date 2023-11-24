@@ -15,6 +15,7 @@ import { Route, RouterProvider, Routes, createBrowserRouter, createRoutesFromEle
 import RootLayouts from './RootLayouts/RootLayouts';
 import NoPage from './Pages/NoPage';
 import FavouritePage from './Pages/FavouritePage';
+import LoginRegisterPage from './Pages/LoginRegisterPage';
 
 
 // this is to link to the navbar layout
@@ -34,6 +35,8 @@ const router= createBrowserRouter(
 <Route path='shoppingCart'  element={<ShoppingCart/>}/>
 <Route path=':id'  element={<Homepage/>}/>
 <Route path='*'  element={<NoPage/>   }/>
+<Route path='login'  element={<LoginRegisterPage/>   }/>
+
 
 
 
@@ -50,7 +53,22 @@ const router= createBrowserRouter(
 function App() {
 
 
-  
+  useEffect(()=>{
+
+    const test=[];
+
+if(localStorage.getItem("cart")){
+
+
+}
+else{ 
+    localStorage.setItem("cart",JSON.stringify(test));
+localStorage.setItem("favourite",JSON.stringify(test));
+localStorage.setItem("cartNum",JSON.stringify(test));
+}
+
+
+  },[])
  
    
 

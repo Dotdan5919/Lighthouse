@@ -12,8 +12,54 @@ import RegularBtn from '../components/RegularBtn'
 import { Link } from 'react-scroll'
 
 const Hero = () => {
+
+
+const sliderclass="bg-gray-100 w-10 p-1 rounded-sm ";
+const sliderclassHide="bg-gray-100 w-10 p-1 rounded-sm opacity-10";
+
+let sliderExtraClass="opacity-10";
+
   const [slide,setSlide]=useState(1);
+
+  const runMe = ()=>{
+
+    let timeoutId;
+    clearTimeout(timeoutId);
+    timeoutId=setTimeout(() => {
+
+
+    
+    setSlide(slide<3?slide+1:1);
+    
+  }, 6000);
+
   
+}
+
+
+  const timeoutSetter=(x)=>
+  {
+    console.log("before timeout" + x);
+
+    // Declare a variable to store the timeout ID
+    let timeoutId;
+  
+    // Clear the existing timeout (if any)
+    // clearTimeout(timeoutId);
+  
+    // Set a new timeout
+    // timeoutId = setTimeout(() => {
+    //   setSlide(x);
+    //   console.log("hi" + x);
+    // }, 6000);
+  
+    clearTimeout(timeoutId);
+    // Store the timeout ID in a state variable if needed
+    // setTimeoutId(timeoutId);
+      
+     
+  }
+      
 
 useEffect(()=>
 {
@@ -27,6 +73,10 @@ useEffect(()=>
         sliderElement.style.scrollBehavior="smooth";
   
         sliderElement.scrollLeft=-200;
+        timeoutSetter(2);
+        runMe();
+        
+        console.log("i am in 1");
         
       break;
       case 2:
@@ -34,7 +84,9 @@ useEffect(()=>
         sliderElement.style.scrollBehavior="smooth";
   
         sliderElement.scrollLeft=600;
-        
+        timeoutSetter(3);
+        runMe();
+        console.log("i am in 2");
 
       break;
       case 3:
@@ -42,7 +94,9 @@ useEffect(()=>
         sliderElement.style.scrollBehavior="smooth";
   
         sliderElement.scrollLeft=1200;
-        
+        timeoutSetter(1);
+        runMe();
+        console.log("i am in 3");
 
       break;
 
@@ -52,12 +106,9 @@ useEffect(()=>
 
   }
 
-  setTimeout(() => {
-
-    slide<3?setSlide(slide+1):setSlide(1)
-   
-     
-      }, 5000);
+  
+  return () => clearTimeout();
+  
 }
 
 ,[slide]
@@ -74,7 +125,7 @@ useEffect(()=>
 
 
   return (
-    <div className='bg-myblack w-[100vw] lg:h-[100vh] sm:h-[130vh] lg:block flex flex-col items-center justify-center ' id="hero">
+    <div className='bg-myblack w-[100vw] overflow-hidden sm-pb-0 pb-7  h-fit lg:block flex flex-col items-center justify-center ' id="hero">
       
 
 <div className="lg:grid lg:grid-cols-12 flex flex-col gap-5   lg:grid-flow-col justify-center w-[85%]   lg:h-[80vh]  pb-2 items-center"> 
@@ -85,6 +136,13 @@ useEffect(()=>
 <img src={light_2} alt="" srcset=""  className='w-[500px] h-[520px] mt-20 mx-8 ' id="1" />
 <img src={light_3} alt="" srcset=""  className='w-[500px] h-[520px] mt-20 mx-8' id="2" />
 <img src={light_1} alt="" srcset=""  className='w-[500px] h-[520px] mt-20 mx-8' id="3" />
+
+
+</div>
+<div className=" gap-1 lg:hidden flex ">
+<div className={slide===1?sliderclass:sliderclassHide } onClick={()=>setSlide(1)}></div>
+<div className={slide===2?sliderclass:sliderclassHide } onClick={()=>setSlide(2)}></div>
+<div className={slide===3?sliderclass:sliderclassHide } onClick={()=>setSlide(3)}></div>
 
 
 </div>
