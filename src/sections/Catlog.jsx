@@ -84,7 +84,7 @@ eventBus.on("cartRemoved", (data) => {
 else{
   
   scrollOffset=1700;
-  sdfds
+  
    
 }
 
