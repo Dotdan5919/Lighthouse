@@ -1,8 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useRef } from 'react'
+import { useParams } from 'react-router-dom';
 
 const Aboutus = () => {
+
+  const aboutref=useRef(null);
+  const id =useParams();
+
+
+  useEffect(()=>
+  {
+
+
+if(id.id)
+{
+
+
+aboutref.current?.scrollIntoView({behavior:'smooth'});
+
+}
+
+
+
+  })
+
   return (
-    <div className='flex  flex-col lg:gap-40 gap-20 text-myblack' id="about">
+    <div className='flex  flex-col lg:gap-40 gap-20 text-myblack' id="about" ref={aboutref}>
     <div className="flex flex-col gap-5"> 
       <h1 className='text-xl font-bold'>About Us</h1>  
       <p className='lg:w-[70%] w-full  text-[13px] leading-relaxed'>Since our humble beginnings in 2006, 

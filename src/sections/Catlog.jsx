@@ -10,6 +10,7 @@ import eventBus from '../eventBus.js';     //this is a link to Eventbus that was
 import Events from 'react-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import { useParams } from 'react-router-dom';
 
  
 
@@ -21,13 +22,15 @@ const options = {
 
 
 
-const Catlog = () => {
+const Catlog = ({section}) => {
    
   const[catalogArray,setCatlogArray]=useState(4);  //setting the number of the array that would be displayed per time
   const[slideleft,setSlideleft]=useState("");     
   let scrollOffset;      ///this variable is used to calculate the extent to which a the browser scrolls when next is pressed on the catalog section
   //
+  const catref=useRef(null);
 
+  
 const[eventTriggered,setEventTriggered]=useState("");
 
 
@@ -101,13 +104,26 @@ setEventTriggered("");
 
 }
 
+if(id.id==="catalog"){
+  cartref.current?.scrollIntoView({ behavior: 'smooth'  });
+  
+}
+else if(section==="catalog")
+{
+  cartref.current?.scrollIntoView({ behavior: 'smooth'  });
+
 
 }
-,[window.innerWidth,eventTriggered]
+}
+
+
+
+
 )
  
  
 const cartref=useRef(null);
+const id=useParams();
 
 
 const handleCartMovementClick=(side)=>
@@ -153,8 +169,6 @@ const handleCartMovementClick=(side)=>
   }
 
  
-
-  cartref.current?.scrollIntoView({ behavior: 'smooth'  });
 
 }
 

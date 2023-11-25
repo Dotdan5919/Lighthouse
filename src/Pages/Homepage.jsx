@@ -5,13 +5,13 @@ import Hero from '../sections/Hero'
 import Footer from '../sections/Footer'
 import SectionTwo from '../sections/SectionTwo'
 
-const Homepage = () => {
+const Homepage = ({section}) => {
   return (
     <div>
  
       <main  >
       <Hero/>
-      <SectionTwo/>
+      <SectionTwo section={section} />
 
 
       <Footer/>

@@ -4,12 +4,12 @@ import Catlog from './Catlog'
 import Instagram from './Instagram'
 import Footer from './Footer'
 
-const SectionTwo = () => {
+const SectionTwo = ({section}) => {
   return (
     <div className='w-full lg:py-10 lg:px-60 py-5 px-10'>
       <About/>
 
-      <Catlog/>
+      <Catlog section={section}/>
 
       <Instagram />
       

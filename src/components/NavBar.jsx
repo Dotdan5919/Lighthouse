@@ -1,15 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faClose, faGrinHearts, faHeart, faNavicon, faSearch } from '@fortawesome/free-solid-svg-icons'
 import Nav from '../Assets/icons/Nav.svg'
 import { Link,scroller,animateScroll,Events } from 'react-scroll'
 import { NavLink, useLocation, useParams} from 'react-router-dom'
 import eventBus from '../eventBus'
+import Aboutus from '../sections/Aboutus'
 
 const NavBar = (props) => {
 
     const[navActive,setNavActive]=useState(props.active);
     const[location,setlocation]=useState(useLocation().pathname);
+
+    const [searchInput,setSearchInput]=useState(false);
+    const [toggleClass,setToggleClass]=useState("hidden");
+    const [inputRefActive,setInputRefActive]=useState(false);
+    const cartref=useRef(null);
+    const aboutref=useRef(null);
+    const inputref=useRef(null);
+
+
+
+
 
 
 
@@ -68,6 +80,28 @@ const NavBar = (props) => {
     const [favLength,setFavLength]=useState();
     const [cartLength,setCartLength]=useState();
     
+    const handleSearch=()=>
+{
+  
+
+if(inputref.current.value==="")
+{
+
+  searchInput?setSearchInput(false):setSearchInput(true);
+  setInputRefActive(false);
+
+}
+
+else{
+
+  setInputRefActive(true);
+
+
+}
+  
+
+
+}
 
     
     useEffect(()=>{ 
@@ -104,17 +138,20 @@ const NavBar = (props) => {
   
       
     
-      console.log(navActive);
 
       
 
       switch (id.id){
 
         case "about":
-          animateScroll.scrollTo(600);
+          // animateScroll.scrollTo(600);
+          
+          aboutref.current?.scrollIntoView({ behavior: 'smooth'  });
         break;
         case "catalog":
-          animateScroll.scrollTo(1900);
+          // cartref.current?.scrollIntoView({ behavior: 'smooth'  });
+
+          // animateScroll.scrollTo(1900);
         break;
 
         case "contact":
@@ -128,10 +165,12 @@ const NavBar = (props) => {
 
       }
 
-      
+searchInput?setToggleClass("flex  "):setToggleClass("hidden");
 
 
-    } ,[id])
+
+
+    } ,[id,searchInput])
   
    
 
@@ -204,9 +243,35 @@ const NavBar = (props) => {
 
 
 <div className="flex gap-5 items-center row-span-full lg:col-end-13 lg:p-0 p-9 ">
+<div className="flex relative justify-center items-center">
+<input type="text" placeholder='Search' className={"absolute bg-transparent  border-white border-2 p-1 rounded-md text-white mr-[170px] transition-all duration-500 delay-150 ease-in  "+ toggleClass}  ref={inputref} />
+{location==="/"?
 
-<FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50'/>
+    inputRefActive?(
+      <NavLink to="catalog/name" className="z-[999]" duration={500} smooth={true} spy={true}   offset={-200}>
+      <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50  cursor-pointer' onClick={()=>{handleSearch()}}/>
+      </NavLink>):( <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50 z-[999] cursor-pointer' onClick={()=>{handleSearch()}}/>
+      )
+    
+    
+    :   
 
+    inputRefActive?(
+      <NavLink to="catalog/" className="z-[999]" duration={500} smooth={true} spy={true}   offset={-200} onClick={()=>{setlocation('/');setNavActive(false)}}>
+      <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50  cursor-pointer' onClick={()=>{handleSearch()}}/>
+      </NavLink>):( <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50 z-[999] cursor-pointer' onClick={()=>{handleSearch()}}/>
+      )
+
+
+
+}
+
+
+
+
+
+
+</div>
 <NavLink exact to="favourite" className="relative" onClick={()=>{setlocation('/favourite')}}>{ favLength>0 ? (
   <div className="rounded-full w-2 h-2 flex justify-center items-center -top-1 left-3 bg-gray-300 p-2 absolute">
   <p>{favLength}</p>
