@@ -213,12 +213,12 @@ searchInput?setToggleClass("flex  "):setToggleClass("hidden");
 <div className="logo hover:opacity-80 hover:text-yellow-50 cursor-default text-white transition-all duration-1000">
 <h1>
 
-{ location==="/"? ( <Link to="hero" duration={400} offset={50} smooth={true}> LightHouse</Link> ) :  
-( <NavLink to="/" onClick={()=>{setlocation('/')}} duration={400} offset={50} smooth={true}> LightHouse</NavLink> )   }
+{ location==="/"? ( <Link to="hero" duration={400} offset={50} smooth={true}  className={searchInput?"sm:flex hidden":"" + "sm:flex  " + " sm:flex "}> LightHouse</Link> ) :  
+( <NavLink to="/" onClick={()=>{setlocation('/')}} duration={400} offset={50} smooth={true} className={searchInput?" sm:flex hidden":" sm:flex " + " "+ "sm:flex "}> LightHouse</NavLink> )   }
 
 
 </h1>
-<p className='text-[10px] text-white'>designers lamp</p>
+<p className={searchInput?" sm:flex hidden":"sm:flex "+ " "+" sm:flex text-[10px] text-white "} >designers lamp</p>
 
 </div>
 </div>
@@ -256,7 +256,7 @@ searchInput?setToggleClass("flex  "):setToggleClass("hidden");
 {location==="/"?
 
     inputRefActive?(
-      <NavLink to={"catalog/"+ inputVal } className="z-[999]" duration={500} smooth={true} spy={true}   offset={-200}>
+      <NavLink to={"catalog/"+ inputVal } className="z-[999]" duration={500} smooth={true} spy={true}   offset={-200}  >
       <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50  cursor-pointer' onClick={()=>{handleSearch()}}/>
       </NavLink>):( <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50 z-[999] cursor-pointer' onClick={()=>{handleSearch()}}/>
       )
@@ -265,7 +265,7 @@ searchInput?setToggleClass("flex  "):setToggleClass("hidden");
     :   
 
     inputRefActive?(
-      <NavLink to={"catalog/"+ inputVal } className="z-[999]" duration={500} smooth={true} spy={true}   offset={-200} onClick={()=>{setlocation('/');setNavActive(false)}}>
+      <NavLink to={"catalog/"+ inputVal } className="z-[999]" duration={500} smooth={true} spy={true}   offset={-200} onClick={()=>{setlocation('/');setNavActive(false)}} >
       <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50  cursor-pointer' onClick={()=>{handleSearch()}}/>
       </NavLink>):( <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50 z-[999] cursor-pointer' onClick={()=>{handleSearch()}}/>
       )

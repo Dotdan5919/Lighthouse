@@ -79,8 +79,9 @@ if(id.id)
 {
 
   
-
-   newCatalogArray=CatalogList.filter(cartalog=>cartalog.name===id.id);
+   newCatalogArray = CatalogList.filter((catalogItem) => {
+    return catalogItem.name.toLowerCase().includes(id.id.toLowerCase());
+  });
 }
 
 else{
@@ -277,6 +278,7 @@ return ( <CatlogCard name={cat.name} id={cat.id} description={cat.description} p
 
 })}
 
+{newCatalogArray.length===0?(<div className='text-gray-400 bg-gray-50 w-full p-7 rounded-md'>No cartalog found after search</div>):""}
 
 
 {eventTriggered===""?"":(<div className="flex gap-4 justify-center items-center bg-myblack p-7 fixed bottom-10 w-70 text-white rounded-md  animate-bounce ">
