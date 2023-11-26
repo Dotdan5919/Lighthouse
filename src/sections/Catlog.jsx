@@ -29,7 +29,10 @@ const Catlog = ({section}) => {
   let scrollOffset;      ///this variable is used to calculate the extent to which a the browser scrolls when next is pressed on the catalog section
   //
   const catref=useRef(null);
+  const cartref=useRef(null);
+const id=useParams();
 
+ 
   
 const[eventTriggered,setEventTriggered]=useState("");
 
@@ -69,6 +72,21 @@ eventBus.on("cartRemoved", (data) => {
 
 
 });
+
+const firstIndex=catalogArray-4;
+let newCatalogArray;
+if(id.id)
+{
+
+  
+
+   newCatalogArray=CatalogList.filter(cartalog=>cartalog.name===id.id);
+}
+
+else{
+
+   newCatalogArray=CatalogList.slice(firstIndex,catalogArray);
+}
 
 
 
@@ -113,7 +131,20 @@ else if(section==="catalog")
   cartref.current?.scrollIntoView({ behavior: 'smooth'  });
 
 
+
+
+ 
+
+  console.log(id.id);
+
+
 }
+
+
+
+
+
+
 }
 
 
@@ -122,8 +153,7 @@ else if(section==="catalog")
 )
  
  
-const cartref=useRef(null);
-const id=useParams();
+
 
 
 const handleCartMovementClick=(side)=>
@@ -193,9 +223,7 @@ const handleCartMovementClick=(side)=>
  
 
 
-  const firstIndex=catalogArray-4;
 
-  const newCatalogArray=CatalogList.slice(firstIndex,catalogArray);
 
   if(firstIndex<1)
   {
