@@ -154,10 +154,10 @@ animateScroll.scrollToTop();
 <form action="" className='grid grid-col-2 grid-row-4 gap-2 h-[80%] ' >
     <h1 className='font-bold col-span-2'>Payment Details
     </h1>
-    <input type="text" className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300  p-1 text-myblack' />
-    <input type="text"  className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300  p-1 text-myblack'/>
-    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300  p-1 text-myblack' />
-    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300  p-1 text-myblack' />
+    <input type="text" className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300  p-1 text-myblack' placeholder='Card Number' />
+    <input type="text"  className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300  p-1 text-myblack' placeholder="Card Holder's name"/>
+    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300  p-1 text-myblack' placeholder='Card Expiry Date' />
+    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300  p-1 text-myblack' placeholder='Cvc' />
 </form>
 
 <NavLink to="/login"><button className='bg-myblack text-white p-5 rounded-xl hover:bg-gray-500 hover:shadow-md   transition-all duration-200'> Proceed to checkout</button></NavLink>
@@ -189,10 +189,10 @@ animateScroll.scrollToTop();
 <form action="" className='grid grid-col-2 grid-row-4 gap-2 h-[80%] ' >
     <h1 className='font-bold col-span-2'>Payment Details
     </h1>
-    <input type="text" className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300 text-myblack p-1' />
-    <input type="text"  className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300 text-myblack p-1'/>
-    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300 text-myblack p-1' />
-    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300 text-myblack p-1' />
+    <input type="text" className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300 text-myblack p-1' placeholder='Card Number' />
+    <input type="text"  className='col-span-2 w-full bg- bg-transparent outline-none border-2 border-gray-300 text-myblack p-1' placeholder="Card Holder's name"/>
+    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300 text-myblack p-1' placeholder='Card Expiry Date'  />
+    <input type="text" className=' w-full bg- bg-transparent outline-none border-2 border-gray-300 text-myblack p-1' placeholder='Cvc' />
 </form>
 
 

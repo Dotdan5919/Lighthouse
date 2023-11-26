@@ -135,7 +135,7 @@ useEffect(()=>
 
 <img src={light_2} alt="" srcset=""  className='w-[500px] h-[520px] mt-20 mx-8 ' id="1" />
 <img src={light_3} alt="" srcset=""  className='w-[500px] h-[520px] mt-20 mx-8' id="2" />
-<img src={light_1} alt="" srcset=""  className='w-[500px] h-[520px] mt-20 mx-8' id="3" />
+<img src={light_1} alt="" srcset=""  className='w-[700px] h-[520px]  mt-20 mx-8' id="3" />
 
 
 </div>

@@ -29,7 +29,10 @@ const Catlog = ({section}) => {
   let scrollOffset;      ///this variable is used to calculate the extent to which a the browser scrolls when next is pressed on the catalog section
   //
   const catref=useRef(null);
+  const cartref=useRef(null);
+const id=useParams();
 
+ 
   
 const[eventTriggered,setEventTriggered]=useState("");
 
@@ -69,6 +72,22 @@ eventBus.on("cartRemoved", (data) => {
 
 
 });
+
+const firstIndex=catalogArray-4;
+let newCatalogArray;
+if(id.id)
+{
+
+  
+   newCatalogArray = CatalogList.filter((catalogItem) => {
+    return catalogItem.name.toLowerCase().includes(id.id.toLowerCase());
+  });
+}
+
+else{
+
+   newCatalogArray=CatalogList.slice(firstIndex,catalogArray);
+}
 
 
 
@@ -113,7 +132,20 @@ else if(section==="catalog")
   cartref.current?.scrollIntoView({ behavior: 'smooth'  });
 
 
+
+
+ 
+
+  console.log(id.id);
+
+
 }
+
+
+
+
+
+
 }
 
 
@@ -122,8 +154,7 @@ else if(section==="catalog")
 )
  
  
-const cartref=useRef(null);
-const id=useParams();
+
 
 
 const handleCartMovementClick=(side)=>
@@ -193,9 +224,7 @@ const handleCartMovementClick=(side)=>
  
 
 
-  const firstIndex=catalogArray-4;
 
-  const newCatalogArray=CatalogList.slice(firstIndex,catalogArray);
 
   if(firstIndex<1)
   {
@@ -249,6 +278,7 @@ return ( <CatlogCard name={cat.name} id={cat.id} description={cat.description} p
 
 })}
 
+{newCatalogArray.length===0?(<div className='text-gray-400 bg-gray-50 w-full p-7 rounded-md'>No cartalog found after search</div>):""}
 
 
 {eventTriggered===""?"":(<div className="flex gap-4 justify-center items-center bg-myblack p-7 fixed bottom-10 w-70 text-white rounded-md  animate-bounce ">

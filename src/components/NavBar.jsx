@@ -79,6 +79,8 @@ const NavBar = (props) => {
 
     const [favLength,setFavLength]=useState();
     const [cartLength,setCartLength]=useState();
+    const [inputVal,setInputVal]=useState("");
+
     
     const handleSearch=()=>
 {
@@ -102,6 +104,10 @@ else{
 
 
 }
+
+
+
+
 
     
     useEffect(()=>{ 
@@ -168,9 +174,11 @@ else{
 searchInput?setToggleClass("flex  "):setToggleClass("hidden");
 
 
+// setInputVal(document.getElementById("inputref").value);
+// console.log(inputVal);
 
 
-    } ,[id,searchInput])
+    } ,[id,searchInput,inputVal,inputref])
   
    
 
@@ -205,12 +213,12 @@ searchInput?setToggleClass("flex  "):setToggleClass("hidden");
 <div className="logo hover:opacity-80 hover:text-yellow-50 cursor-default text-white transition-all duration-1000">
 <h1>
 
-{ location==="/"? ( <Link to="hero" duration={400} offset={50} smooth={true}> LightHouse</Link> ) :  
-( <NavLink to="/" onClick={()=>{setlocation('/')}} duration={400} offset={50} smooth={true}> LightHouse</NavLink> )   }
+{ location==="/"? ( <Link to="hero" duration={400} offset={50} smooth={true}  className={searchInput?"sm:flex hidden":"" + "sm:flex  " + " sm:flex "}> LightHouse</Link> ) :  
+( <NavLink to="/" onClick={()=>{setlocation('/')}} duration={400} offset={50} smooth={true} className={searchInput?" sm:flex hidden":" sm:flex " + " "+ "sm:flex "}> LightHouse</NavLink> )   }
 
 
 </h1>
-<p className='text-[10px] text-white'>designers lamp</p>
+<p className={searchInput?" sm:flex hidden":"sm:flex "+ " "+" sm:flex text-[10px] text-white "} >designers lamp</p>
 
 </div>
 </div>
@@ -244,11 +252,11 @@ searchInput?setToggleClass("flex  "):setToggleClass("hidden");
 
 <div className="flex gap-5 items-center row-span-full lg:col-end-13 lg:p-0 p-9 ">
 <div className="flex relative justify-center items-center">
-<input type="text" placeholder='Search' className={"absolute bg-transparent  border-white border-2 p-1 rounded-md text-white mr-[170px] transition-all duration-500 delay-150 ease-in  "+ toggleClass}  ref={inputref} />
+<input type="text" placeholder='Search' id='inputref' className={"absolute bg-transparent  border-white border-2 p-1 rounded-md text-white mr-[170px] transition-all duration-500 delay-150 ease-in  "+ toggleClass}  ref={inputref} onChange={(e)=>setInputVal(e.target.value)} />
 {location==="/"?
 
     inputRefActive?(
-      <NavLink to="catalog/name" className="z-[999]" duration={500} smooth={true} spy={true}   offset={-200}>
+      <NavLink to={"catalog/"+ inputVal } className="z-[999]" duration={500} smooth={true} spy={true}   offset={-200}  >
       <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50  cursor-pointer' onClick={()=>{handleSearch()}}/>
       </NavLink>):( <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50 z-[999] cursor-pointer' onClick={()=>{handleSearch()}}/>
       )
@@ -257,7 +265,7 @@ searchInput?setToggleClass("flex  "):setToggleClass("hidden");
     :   
 
     inputRefActive?(
-      <NavLink to="catalog/" className="z-[999]" duration={500} smooth={true} spy={true}   offset={-200} onClick={()=>{setlocation('/');setNavActive(false)}}>
+      <NavLink to={"catalog/"+ inputVal } className="z-[999]" duration={500} smooth={true} spy={true}   offset={-200} onClick={()=>{setlocation('/');setNavActive(false)}} >
       <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50  cursor-pointer' onClick={()=>{handleSearch()}}/>
       </NavLink>):( <FontAwesomeIcon icon={faSearch} color='white'  className='fa-1x hover:opacity-80 hover:text-yellow-50 z-[999] cursor-pointer' onClick={()=>{handleSearch()}}/>
       )
